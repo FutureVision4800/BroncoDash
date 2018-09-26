@@ -5,8 +5,8 @@ import TextField from '@material-ui/core/TextField';
 
 const Navigation = () => (
   <div>
-    <NavLink to="/login">Log In</NavLink>
-    <NavLink to="/signup">Sign Up</NavLink>
+    <Button color="primary" variant="contained"><NavLink to="/login" className="pageLinks">Log In</NavLink></Button>
+    <Button color="primary" variant="contained"><NavLink to="/signup" className="pageLinks">Sign Up</NavLink></Button>
   </div>
 );
 

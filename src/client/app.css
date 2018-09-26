@@ -6,3 +6,6 @@ body {
   text-align: center;
   margin: auto;
 }
+.pageLinks {
+  color: white;
+}

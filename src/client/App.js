@@ -3,6 +3,7 @@ import './app.css';
 import { BrowserRouter, Route } from 'react-router-dom';
 import UserSignUp from './components/UserSignUp';
 import UserLogin from './components/UserLogin';
+import SignIn from './components/SignIn';
 import Navigation from './components/Navigation';
 
 
@@ -20,7 +21,8 @@ export default class App extends Component {
     return (
       <div>
         {username ? <h1>{`Hello ${username} welcome to BroncoDash`}</h1> : <h1>Loading.. please wait!</h1>}
-
+        <SignIn />
+          {/*
         <BrowserRouter>
           <div>
             <Navigation>
@@ -31,7 +33,7 @@ export default class App extends Component {
             </Navigation>
           </div>
         </BrowserRouter>
-
+        */}
       </div>
 
     );
