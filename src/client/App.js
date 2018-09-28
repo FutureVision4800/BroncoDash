@@ -20,22 +20,14 @@ export default class App extends Component {
     const { username } = this.state;
     return (
       <div>
-        {username ? <h1>{`Hello ${username} welcome to BroncoDash`}</h1> : <h1>Loading.. please wait!</h1>}
-        <SignIn />
-          {/*
-        <BrowserRouter>
-          <div>
-            <Navigation>
-              <switch>
-                <Route path="/login" component={UserLogin} />
-                <Route path="/signup" component={UserSignUp} />
-              </switch>
-            </Navigation>
-          </div>
-        </BrowserRouter>
-        */}
-      </div>
+        <header>
+          <Navigation />
+        </header>
 
+        <div>
+          {username ? <h1>{`Hello ${username} welcome to BroncoDash`}</h1> : <h1>Loading.. please wait!</h1>}
+        </div>
+      </div>
     );
   }
 }
