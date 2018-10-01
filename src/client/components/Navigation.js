@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './componentStyles/Navigation.css';
 import { LinkContainer } from 'react-router-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { Layout } from 'antd';
 import {
   Navbar,
   Nav,
@@ -12,7 +13,7 @@ import {
 
 
 const Navigation = () => (
-  <div>
+  <div className="navBar">
     <Navbar inverse>
       <Navbar.Form pullLeft>
         <Navbar.Header>
@@ -29,9 +30,11 @@ const Navigation = () => (
             Info
             </NavItem>
           </LinkContainer>
-          <NavItem eventKey={2} href="#">
-                    Link
-          </NavItem>
+          <LinkContainer to="/organizations">
+            <NavItem>
+                    Organizations
+            </NavItem>
+          </LinkContainer>
         </Nav>
       </Navbar.Form>
       <Nav pullRight>

@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, { Component } from 'react';
 import './app.css';
+
 import Main from './Main';
 import Navigation from './components/Navigation';
 
@@ -22,10 +23,12 @@ export default class App extends Component {
     return (
       <div>
         <header>
-            <Navigation />
+          <Navigation />
         </header>
         <div>
-            <Main />
+
+          <Main />
+
         </div>
       </div>
     );
