@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6eac3a30-f70f-4f63-98ea-ee28fb22d51e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/components/ClubsPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/OrgPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/componentStyles/ClubsPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/componentStyles/HomePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/Navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/Navigation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/UserRegAndLog/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/UserRegAndLog/UserLogin.js" afterDir="false" />
-    </list>
+    <list default="true" id="6eac3a30-f70f-4f63-98ea-ee28fb22d51e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -237,7 +226,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/components/HomePage.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
@@ -249,7 +238,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/components/componentStyles/HomePage.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="46">
@@ -465,7 +454,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65768000" />
+    <option name="totallyTimeSpent" value="65771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -701,6 +690,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/components/componentStyles/HomePage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/components/HomePage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -708,13 +704,6 @@
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/components/componentStyles/HomePage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
