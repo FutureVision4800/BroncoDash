@@ -11,14 +11,15 @@ const usersRouter = require('./routes/users');
 const app = express();
 
 // view engine setup
+/*
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
+*/
 app.use(express.static('dist'));
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
 app.listen(8080, () => console.log('Listening on port 8080!'));
 
-
+/*
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -45,3 +46,4 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
+*/
