@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: 'bronco-rush',
     script: './server/index.js',
-/*
+    /*
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     args: 'one two',
     instances: 1,
@@ -15,16 +15,17 @@ module.exports = {
     env_production: {
       NODE_ENV: 'production'
     }
+    */
   }],
-*/
+
   deploy: {
     production: {
-      user: 'FutureVision',
+      user: 'ubuntu',
       host: 'ec2-18-188-136-254.us-east-2.compute.amazonaws.com',
       key: '~/.ssh/BroncoDash.pem',
-      ref: 'origin/Running-with-pm2-branch',
+      ref: 'origin/master',
       repo: 'git@github.com:FutureVision4800/BroncoProject-Fullstack.git',
-      path: '/home/bryan/BroncoProject-Fullstack',
+      path: '/home/ubuntu/BroncoProject-Fullstack',
       'post-deploy': 'npm install && pm2 startOrRestart ecosystem.config.js '
     }
   }
