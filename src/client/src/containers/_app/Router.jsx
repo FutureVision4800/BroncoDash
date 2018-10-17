@@ -206,7 +206,6 @@ const wrappedRoutes = () => (
       <Route path="/account" component={Account} />
       <Route path="/e-commerce" component={ECommerce} />
       <Route path="/default_pages" component={DefaultPages} />
-      <Route path="/documentation" component={Documentation} />
     </div>
   </div>
 );
