@@ -99,6 +99,7 @@ checkBrowsers(paths.appPath, isInteractive)
       }
       console.log(chalk.cyan('Starting the development server...\n'));
       openBrowser(urls.localUrlForBrowser);
+      console.log('Development server at http://localhost:3000/')
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {
