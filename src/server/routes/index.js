@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
     connection.query('SELECT * FROM employees', (err,rows) => {
-        if(!err) throw err;
+        if(err) throw err;
 
         console.log('Data received from Db:\n');
         console.log(rows);
@@ -26,16 +26,16 @@ const connection = mysql.createConnection({
     database: 'mydb'
 });
 connection.connect((err) => {
-    if (!err) throw err;
+    if (err) throw err;
     console.log('Connected!');
 });
-
+/*
 //how to create data
 const employee = { name: 'Winnie', location: 'Australia' };
 connection.query('INSERT INTO employees SET ?', employee, (err, res) => {
     if(!err) throw err;
 
-    console.log('Last insert ID:', res.insertId);
+    console.log('Last insert ID:'+ res.insertId);
 });
 
 //how to update location
@@ -56,6 +56,6 @@ connection.query(
         console.log(`Deleted ${result.affectedRows} row(s)`);
     }
 );
-
+*/
 
 module.exports = router;
