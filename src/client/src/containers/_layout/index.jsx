@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import NotificationSystem from 'rc-notification';
 import Topbar from './topbar/Topbar';
 import TopbarWithNavigation from './topbar_with_navigation/TopbarWithNavigation';
 import Sidebar from './sidebar/Sidebar';
@@ -17,18 +16,6 @@ import { CustomizerProps, SidebarProps, ThemeProps } from '../../shared/prop-typ
 
 let notification = null;
 
-const showNotification = () => {
-  notification.notice({
-    content: <BasicNotification
-      title="Welcome to the Bronco Rush!"
-      message="Here you can find your home away from home. Enjoy!"
-    />,
-    duration: 5,
-    closable: true,
-    style: { top: 0, left: 'calc(100vw - 100%)' },
-    className: 'right-up',
-  });
-};
 
 class Layout extends Component {
   static propTypes = {
