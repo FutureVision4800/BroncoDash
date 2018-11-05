@@ -13,11 +13,6 @@ const Img2 = `${process.env.PUBLIC_URL}/img/13.png`;
 
 class ActivityTimeline extends Component {ActivityTimeline
 
-    constructor(props){
-        super(props);
-
-    }
-
     render() {
         return (
             <Col md={12} lg={12} xl={12} xs={12}>

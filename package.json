@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Bronco",
   "scripts": {
-    "client": "cd src/client && yarn run start",
+    "client": "cd src/client && npm run start",
     "server": "cd src/server && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "concurrently \"npm run server\" \"yarn run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Future Vision",
   "license": "ISC",

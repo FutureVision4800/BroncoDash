@@ -30,5 +30,8 @@ router.get('/database', function(req, res, next) {
   });
 });
 
+router.get('/api/hello', (req, res) => {
+  res.send({hello: 'hello from the backend'});
+});
 
 module.exports = router;

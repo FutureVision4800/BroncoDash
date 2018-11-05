@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import ProfileMain from './components/ProfileMain';
 import ProfileCalendar from './components/ProfileCalendar';
-import ProfileTasks from './components/ProfileTasks';
 import ProfileTabs from './components/ProfileTabs';
 
 const Calendar = () => (
@@ -13,7 +12,6 @@ const Calendar = () => (
           <Row>
             <ProfileMain />
             <ProfileCalendar />
-          {/*<ProfileTasks />*/}
           </Row>
         </Col>
         <ProfileTabs />

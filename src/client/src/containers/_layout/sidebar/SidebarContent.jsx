@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SidebarLink from './SidebarLink';
-import SidebarCategory from './SidebarCategory';
 
 class SidebarContent extends Component {
   static propTypes = {
@@ -24,7 +23,7 @@ class SidebarContent extends Component {
         <ul className="sidebar__block">
           <SidebarLink title="Mail" icon="envelope" route="/mail" onClick={this.hideSidebar} />
           <SidebarLink title="Chat" icon="bubble" route="/chat" onClick={this.hideSidebar} />
-          <SidebarLink title="Google map" icon="map" route="/maps/google_map" onClick={this.hideSidebar} />    
+          <SidebarLink title="Google map" icon="map" route="/maps/google_map" onClick={this.hideSidebar} />
         </ul>
         <ul className="sidebar__block">
           <SidebarLink title="Log Out" icon="exit" route="/log_in" />

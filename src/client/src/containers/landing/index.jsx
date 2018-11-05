@@ -1,17 +1,7 @@
 /* eslint-disable max-len */
 import React, { PureComponent } from 'react';
-import { Col, Row, Container } from 'reactstrap';
-import scrollToComponent from 'react-scroll-to-component';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Header from './components/Header';
-import Technologies from './components/Technologies';
-import Demos from './components/Demos';
-import Features from './components/Features';
-import Purchase from './components/Purchase';
-import Footer from './components/Footer';
-import Testimonials from './components/Testimonials';
-import FeatureRequest from './components/FeatureRequest';
 import { changeThemeToDark, changeThemeToLight } from '../../redux/actions/themeActions';
 import { ThemeProps } from '../../shared/prop-types/ReducerProps';
 import {Link} from "react-router-dom";
@@ -33,7 +23,7 @@ class Landing extends PureComponent {
   };
 
   render() {
-    const { theme } = this.props;
+
 
     return (
       <div className="landing">
