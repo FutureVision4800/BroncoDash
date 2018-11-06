@@ -6,7 +6,7 @@ import { changeThemeToDark, changeThemeToLight } from '../../redux/actions/theme
 import { ThemeProps } from '../../shared/prop-types/ReducerProps';
 import {Link} from "react-router-dom";
 
-const logo = `${process.env.PUBLIC_URL}/img/landing/logo_svg.svg`;
+//const logo = `${process.env.PUBLIC_URL}/img/landing/logo_svg.svg`;
 
 class Landing extends PureComponent {
   static propTypes = {

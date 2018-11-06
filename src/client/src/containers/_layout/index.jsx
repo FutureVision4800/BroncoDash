@@ -8,13 +8,11 @@ import TopbarWithNavigation from './topbar_with_navigation/TopbarWithNavigation'
 import Sidebar from './sidebar/Sidebar';
 import SidebarMobile from './topbar_with_navigation/sidebar_mobile/SidebarMobile';
 import Customizer from './customizer/Customizer';
-import { BasicNotification } from '../../shared/components/Notification';
 import { changeMobileSidebarVisibility, changeSidebarVisibility } from '../../redux/actions/sidebarActions';
 import { changeThemeToDark, changeThemeToLight } from '../../redux/actions/themeActions';
 import { changeBorderRadius, toggleBoxShadow, toggleTopNavigation } from '../../redux/actions/customizerActions';
 import { CustomizerProps, SidebarProps, ThemeProps } from '../../shared/prop-types/ReducerProps';
 
-let notification = null;
 
 
 class Layout extends Component {

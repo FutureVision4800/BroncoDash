@@ -4,14 +4,26 @@ import MessageTextOutlineIcon from 'mdi-react/MessageTextOutlineIcon';
 
 const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
 
-class ProfileMain extends React.Component{
+export default class ProfileMain extends React.Component{
 
   state = {
-    profile_name: '',
+    userInfo: [],
+    profile_username: '',
+    profile_firstName: '',
+    profile_lastName: '',
     profile_email: ''
-
+    
   };
 
+  componentDidMount(){
+    fetch('/users/getInfo')
+      .then(res => res.json())
+      .then(res => this.setState({ profile_username: res.userName }))
+      .then(res => this.setState({ profile_firstName: res.firstName }))
+      .then(res => this.setState({ profile_lastname: res.lastName }))
+      .then(res => this.setState({ profile_email: res.email }))
+      .catch(err => console.log(err));
+  }
 
   render(){
     return(
@@ -23,9 +35,9 @@ class ProfileMain extends React.Component{
                 <img src={Ava} alt="avatar" />
               </div>
               <div className="profile__data">
-                <p className="profile__name">Bryan Ayala</p>
+                <p className="profile__name">{ this.state.profile_firstName }  { this.state.profile_lastName }</p>
                 <p className="profile__work">CPP Student</p>
-                <p className="profile__contact">blayala@cpp.edu</p>
+                <p className="profile__contact">{ this.state.profile_email }</p>
                 <p className="profile__contact">(123)-456-7890</p>
                 <Button color="primary" className="icon profile__btn"><p><MessageTextOutlineIcon /> Message</p></Button>
               </div>
@@ -52,4 +64,4 @@ class ProfileMain extends React.Component{
 }
 
 
-export default ProfileMain;
+
