@@ -12,7 +12,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
     if(err) throw err;
 
     db = client.db(dbName); // once connected, assign the connection to the global variable
-    console.log("Database Connection Successfull");
+    console.log("Database Connection Successfull from routes user");
 });
 
 
@@ -38,8 +38,8 @@ router.get('/getInfo', function(req, res, next) {
     if (err) throw err;
 
     
-    console.log(result);
-    res.jsonp(result);
+   // console.log(result);
+    res.json(result[0]);
   });
   
 });
