@@ -20,7 +20,7 @@ const renderTextField = ({
 
 renderTextField.propTypes = {
   input: PropTypes.shape().isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,//.isRequired,
   defaultValue: PropTypes.string,
   meta: PropTypes.shape({
     touched: PropTypes.bool,

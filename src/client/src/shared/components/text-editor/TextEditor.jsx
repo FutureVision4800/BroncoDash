@@ -13,7 +13,7 @@ const ToolbarOptions = {
 
 export default class TextEditorTwo extends Component {
   static propTypes = {
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,//.isRequired,
   };
 
   constructor() {

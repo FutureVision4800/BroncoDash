@@ -13,15 +13,30 @@ class Calendar extends React.Component{
   constructor(){
     super();
     this.state = {
-      userInfo: this.getInfo(),
+      userInfo: {},//this.getInfo(),
+      //email: this.userInfo.email
     }
-    console.log("hello");
+    //console.log(this.state.userInfo);
+    //console.log(this.state.userInfo.email);
+    // console.log(this.state.email);
   }
+
+  componentDidMount(){
+    fetch('/users/getInfo')
+    .then(res => res.json())
+    .then(data => this.setState({ userInfo: data }))
+    .catch(err => console.log(err));
+
+    console.log(this.state.userInfo);
+  }
+  
 
   async getInfo(){
     try {
       const res = await fetch('/users/getInfo');
-      return res.json();
+      const userInfo = res.json();
+     
+      return userInfo.data;
     }
     catch (err) {
       return console.log(err);
