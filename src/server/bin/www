@@ -23,10 +23,10 @@ var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 
 /**
- * Create HTTPS server.
+ * Create HTTP server.
  */
 
-const server = https.createServer(certificates, app);
+const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.

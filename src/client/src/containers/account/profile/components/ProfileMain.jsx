@@ -7,15 +7,38 @@ const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
 export default class ProfileMain extends React.Component{
 
   
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
-      profile_username: props.username,
-      profile_firstName: props.firstName,
-      profile_lastName: props.lastName,
-      profile_email: props.email
+      userInfo: [],
+      profile_username: "",
+      profile_firstName: "",
+      profile_lastName: "",
+      profile_email: ""
       
     };
+  }
+
+
+
+  getUserInfo(){
+
+    fetch('/users/getInfo')
+    .then(res => res)
+    .then(res => res.json())
+    .then(data => this.setState({
+                        userInfo: data,
+                        profile_username: data[0].username,
+                        profile_firstName: data[0].firstName,
+                        profile_lastName: data[0].lastName,
+                        profile_email: data[0].email,   
+    }))
+    .catch(err => console.log(err));
+
+  }
+
+  componentDidMount(){
+    this.getUserInfo();
   }
 
 /*

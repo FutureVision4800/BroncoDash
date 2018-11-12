@@ -10,7 +10,9 @@
   },
   "author": "Future Vision",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
   "devDependencies": {
     "concurrently": "^4.0.0",
     "nodemon": "^1.17.3"

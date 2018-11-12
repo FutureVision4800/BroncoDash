@@ -30,7 +30,7 @@ router.get('/andrea', function(req, res, next) {
 
 router.get('/getInfo', function(req, res, next) {
 
-  var query = { userName: "brayalad" };
+  var query = { userName: "andyu4ia" };
 
 
   db.collection("BroncoRush_Users").find(query,
@@ -39,7 +39,7 @@ router.get('/getInfo', function(req, res, next) {
 
     
    // console.log(result);
-    res.json(result[0]);
+    res.json(result);
   });
   
 });
