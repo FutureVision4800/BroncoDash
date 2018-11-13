@@ -4,10 +4,13 @@ import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 class Club extends PureComponent {
+    
+    
     static proptypes = {
         clubName: PropTypes.string.isRequired,
         clubDescrip: PropTypes.string.isRequired,
     };
+    
 
     constructor(props){
         super(props);
