@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardBody, Col } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 
@@ -19,7 +19,7 @@ const ClubTile = props => (
                         </div>
                         <div>
                             <h5>Category: { props.clubCategory }</h5>
-                            <h5>Contact Info: { props.clubEmail }</h5>
+                            <h5>Contact Info: <a href={"mailto:" + props.clubEmail}>{ props.clubEmail }</a></h5>
                             <h6>{ props.clubDescription }</h6>
                         </div>
                     </CardBody>
@@ -27,16 +27,17 @@ const ClubTile = props => (
             </div>
 );
 
-export default translate('common')(ClubTile);
+
 
 ClubTile.propTypes = {
+    key: PropTypes.string,
     clubName: PropTypes.string,
     clubCategory: PropTypes.string,
     clubEmail: PropTypes.string,
     clubDescription: PropTypes.string
 };
 
-
+export default translate('common')(ClubTile);
 
 
 /*

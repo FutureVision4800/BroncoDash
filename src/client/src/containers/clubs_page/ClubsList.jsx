@@ -3,6 +3,7 @@ import ClubTile from './ClubTile';
 
 
 
+
 const ClubsList = props => (
 
     
@@ -16,5 +17,6 @@ const ClubsList = props => (
     </div>
     
 );
+
 
 export default ClubsList;

@@ -26,7 +26,7 @@ router.get('/database/getClubs', function(req, res, next) {
     db.collection("BroncoRush_Clubs").find({}).toArray(function(err, result) {
       if (err) throw err;
 
-      console.log(result);
+     // console.log(result);
       res.json(result);
   });
 });
