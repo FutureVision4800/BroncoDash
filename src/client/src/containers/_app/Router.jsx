@@ -82,6 +82,8 @@ import ECommerceDashboardEdit from '../dashboards/e-commerce_table_edit/index';
 
 import Landing from '../landing/index';
 
+import ClubsPage from '../clubs_page/index';
+
 const UI = () => (
   <Switch>
     <Route path="/ui/alerts" component={Alerts} />
@@ -206,6 +208,7 @@ const wrappedRoutes = () => (
       <Route path="/account" component={Account} />
       <Route path="/e-commerce" component={ECommerce} />
       <Route path="/default_pages" component={DefaultPages} />
+      <Route path="/organizations" component={ClubsPage} />
     </div>
   </div>
 );

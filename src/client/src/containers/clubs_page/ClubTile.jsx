@@ -1,13 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Card, CardBody, Col } from 'reactstrap';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 
 
 
+
+
+
 const ClubTile = props => (
     
-    <Col md={12} xl={3} lg={6} xs={12} >
+    
+            <div>
                 <Card>
                     <CardBody className="dashboard__card-widget">
                         <div className="card__title">
@@ -16,16 +20,21 @@ const ClubTile = props => (
                         <div>
                             <h5>Category: { props.clubCategory }</h5>
                             <h5>Contact Info: { props.clubEmail }</h5>
-                            <h6>{ props.clubDescrip }</h6>
+                            <h6>{ props.clubDescription }</h6>
                         </div>
                     </CardBody>
                 </Card>
-            </Col>
-)
+            </div>
+);
 
 export default translate('common')(ClubTile);
 
-
+ClubTile.propTypes = {
+    clubName: PropTypes.string,
+    clubCategory: PropTypes.string,
+    clubEmail: PropTypes.string,
+    clubDescription: PropTypes.string
+};
 
 
 
