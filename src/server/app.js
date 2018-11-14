@@ -4,8 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const dbConnection = require('./database');
+const MongoStore = require('connect-mongo')(session);
+const passport = require('./passport');
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const apiUserRouter = require('./routes/api/user');
 
 const app = express();
 
@@ -19,9 +26,39 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+
+// Sesions
+app.use(
+  session({
+    secret: 'fraggle-rock', //pick a random string tp make the hash that is generated secure
+    store: new MongoStore({ mongooseConnection: dbConnection }),
+    resave: false, //required
+    saveUninitialized: false //required
+  })
+);
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session()); // calls the deserializeUser
+
+// CORS on ExpressJS
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
+// Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/api/user', apiUserRouter);
 
 
 // catch 404 and forward to error handler

@@ -12,8 +12,7 @@ export default class ProfileMain extends React.Component{
     this.state = {
       userInfo: [],
       profile_username: "",
-      profile_firstName: "",
-      profile_lastName: "",
+      profile_name: "",
       profile_email: ""
       
     };
@@ -29,8 +28,7 @@ export default class ProfileMain extends React.Component{
     .then(data => this.setState({
                         userInfo: data,
                         profile_username: data[0].username,
-                        profile_firstName: data[0].firstName,
-                        profile_lastName: data[0].lastName,
+                        profile_name: data[0].name,
                         profile_email: data[0].email,   
     }))
     .catch(err => console.log(err));
@@ -68,7 +66,7 @@ export default class ProfileMain extends React.Component{
                 <img src={Ava} alt="avatar" />
               </div>
               <div className="profile__data">
-                <p className="profile__name">{ this.state.profile_firstName }  { this.state.profile_lastName }</p>
+                <p className="profile__name">{ this.state.profile_name }</p>
                 <p className="profile__work">CPP Student</p>
                 <p className="profile__contact">{ this.state.profile_email }</p>
                 <p className="profile__contact">(123)-456-7890</p>

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import renderCheckBoxField from '../../../../shared/components/form/CheckBox';
 
+
 class LogInForm extends PureComponent {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
@@ -15,14 +16,68 @@ class LogInForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      username: '',
+      password: '',
       showPassword: false,
     };
-
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.showPassword = this.showPassword.bind(this);
   }
 
-  showPassword(e) {
-    e.preventDefault();
+  handleChange(event){
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    
+    fetch('http://localhost:8080/api/user/login', {
+      method: 'POST',
+      headers: new Headers(),
+      body: JSON.stringify({
+          username: this.state.username, 
+          password: this.state.password
+        })
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+      
+    
+
+    /*
+    axios.post('/api/user/login', {
+      username: this.state.username,
+      password: this.state.password
+    })
+    .then(res => {
+      console.log('login response: ');
+      console.log(res);
+
+      if(res.status === 200){
+        // update user state
+        this.props.updateUser({
+          loggedIn: true,
+          username: res.data.username
+        });
+        // update the state to redirect to home
+        this.setState({
+          redirectTo: '/home'
+        });
+      }
+    }).catch(error => {
+        console.log('login error: ');
+        console.log(error);
+    })
+    */
+  }
+
+  showPassword(event) {
+    event.preventDefault();
     this.setState({
       showPassword: !this.state.showPassword,
     });
@@ -43,7 +98,9 @@ class LogInForm extends PureComponent {
               name="username"
               component="input"
               type="text"
-              placeholder="Name"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={this.handleChange}
             />
           </div>
         </div>
@@ -58,10 +115,12 @@ class LogInForm extends PureComponent {
               component="input"
               type={this.state.showPassword ? 'text' : 'password'}
               placeholder="Password"
+              value={this.state.password}
+              onChange={this.handleChange}
             />
             <button
               className={`form__form-group-button${this.state.showPassword ? ' active' : ''}`}
-              onClick={e => this.showPassword(e)}
+              onClick={event => this.showPassword(event)}
             ><EyeIcon />
             </button>
           </div>
@@ -79,7 +138,7 @@ class LogInForm extends PureComponent {
           </div>
         </div>
         <div className="account__btns">
-          <Link className="btn btn-primary account__btn" to="/home">Sign In</Link>
+          <button className="btn btn-primary account__btn" onClick={this.handleSubmit} type="submit">Sign In</button>
           <Link className="btn btn-outline-primary account__btn" to="/register">Create
             Account
           </Link>
