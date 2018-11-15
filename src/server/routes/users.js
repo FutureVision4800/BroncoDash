@@ -50,13 +50,4 @@ res.send({hello: 'hello from the backend'});
 
 
 
-
-
-
-
-
-
-
-
-
 module.exports = router;
