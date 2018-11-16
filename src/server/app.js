@@ -9,10 +9,11 @@ const session = require('express-session');
 const dbConnection = require('./database');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('./passport');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
-const userRouter = require('./routes/user');
+const userRouter = require('./routes/api/user');
 
 const app = express();
 
@@ -47,18 +48,22 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session()); // calls the deserializeUser
 
+// CORS
+app.use(cors());
+
+/*
 // CORS on ExpressJS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+*/
 
 // Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/user', userRouter);
+app.use('/api/user', userRouter);
 
 
 // catch 404 and forward to error handler

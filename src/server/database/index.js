@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 
 const uri = "mongodb://brayalad:Guadalajara1@ds245523.mlab.com:45523/broncorush_data";
 
-mongoose.connect(uri).then(
+mongoose.connect(uri,{ useNewUrlParser: true, useCreateIndex: true }).then(
     () => {
         console.log("Connected to MongoDB using mongoose");
     },

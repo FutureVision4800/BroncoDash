@@ -35,14 +35,15 @@ class LogInForm extends PureComponent {
   handleSubmit(event){
     event.preventDefault();
     
-    fetch('/user/login', {
+    
+    fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify({
           username: this.state.username, 
           password: this.state.password
         }),
       headers: {'Content-Type': 'application/json'},
-      credentials: 'same-origin'
+      //credentials: 'same-origin'
       }).then(res => res.json())
       .then(data => console.log(data))
       .catch(err => console.log(err));

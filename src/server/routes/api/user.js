@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../database/models/user');
-const passport = require('../passport');
-const app = require('../app');
+const User = require('../../database/models/user');
+const passport = require('../../passport');
+const app = require('../../app');
 
-router.post('/', (req, res) => {
+router.post('/signup', (req, res) => {
     console.log('user signup');
 
-    const { username, password } = req.body;
+    const { name, username, email, password } = req.body;
     //ADD VALIDATION
     User.findOne({ username: username }, (err, user) => {
         if(err){
@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
             });
         }
         else {
-            const newUser = newUser({
+            const newUser = new User({
                 username: username,
                 password: password,
                 name: name,
@@ -49,7 +49,7 @@ router.post('/login', function(req, res, next) {
     }
 );
 
-router.get('/', (req, res, next) => {
+router.get('/signup', (req, res, next) => {
     console.log('====user!!====');
     console.log(req.user);
 

@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
+/*
 let db; // global variable to hold the connection
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://brayalad:Guadalajara1@ds245523.mlab.com:45523/broncorush_data";
 const dbName = ("broncorush_data");
 
-/*Connecting to MongoDB Database*/
+//Connecting to MongoDB Database
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
 
     if(err) throw err;
@@ -14,7 +15,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
     db = client.db(dbName); // once connected, assign the connection to the global variable
     console.log("Database Connection Successfull from routes user");
 });
-
+/*
 
 
 /* GET users listing. */
