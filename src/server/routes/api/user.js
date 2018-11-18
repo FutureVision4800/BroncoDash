@@ -43,15 +43,17 @@ router.post('/login', function(req, res, next) {
     (req, res) => {
         console.log('logged in', req.user);
         var userInfo = {
-            username: req.user.username
+            username: req.user.username,  
+            userFullName: req.user.name
         };
         res.send(userInfo);
     }
 );
 
-router.get('/signup', (req, res, next) => {
+router.get('/getCurrentUser', (req, res, next) => {
     console.log('====user!!====');
     console.log(req.user);
+    console.log(req.user.name);
 
     if(req.user){
        res.json({ user: req.user }); 

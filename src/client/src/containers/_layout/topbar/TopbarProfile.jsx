@@ -10,19 +10,57 @@ export default class TopbarProfile extends PureComponent {
     super();
     this.state = {
       collapse: false,
+      loggedIn: false,
+      username: null,
+      userFullName: null
     };
+
+    this.getUserInfo = this.getUserInfo.bind(this);
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   toggle = () => {
     this.setState({ collapse: !this.state.collapse });
   };
 
+  componentDidMount(){
+    this.getUserInfo();
+  }
+
+  getUserInfo(){
+
+    fetch('/api/user/getCurrentUser')
+    .then(res => res)
+    .then(res => res.json()
+    .then(data => {
+      if(data.user){
+        console.log("Get User: There is a user saved in the server session: ");
+
+        this.setState({
+          loggedIn: true,
+          username: data.user.username,  
+          userFullName: data.user.name
+        });
+    } 
+    else{
+      console.log("Get user: no user");
+      this.setState({
+        loggedIn: false,
+        username: null,
+        userFullName: null
+      });
+    }
+  }))
+    .catch(err => console.log(err));
+
+  }
+
   render() {
     return (
       <div className="topbar__profile">
         <button className="topbar__avatar" onClick={this.toggle}>
           <img className="topbar__avatar-img" src={Ava} alt="avatar" />
-          <p className="topbar__avatar-name">Bryan Ayala</p>
+          <p className="topbar__avatar-name">{ this.state.username }</p>
           <DownIcon className="topbar__icon" />
         </button>
         {this.state.collapse && <button className="topbar__back" onClick={this.toggle} />}

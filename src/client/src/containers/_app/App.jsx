@@ -11,6 +11,8 @@ class App extends Component {
     this.state = {
       loading: true,
       loaded: false,
+      loggedIn: false,
+      username: null
     };
   }
 
