@@ -103,8 +103,13 @@ export default class TopbarProfile extends PureComponent {
             <div className="topbar__menu-divider" />
             <TopbarMenuLink title="Account Settings" icon="cog" path="/account/profile" />
             <TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />
-            <button title="Log Out" icon="exit" onClick={this.logout} />
-            <TopbarMenuLink title="Log Out" icon="exit" path="/log_in"><button title="Log Out" icon="exit" onClick={this.logout} /></TopbarMenuLink>
+            <button className="topbar__link" icon="exit" onClick={this.logout}>
+              <span className={`topbar__link-icon lnr `} />
+              <p className="topbar__link-title">Log Out</p>
+            </button>
+            {/*<TopbarMenuLink title="Log Out" icon="exit" path="/log_in">
+              <button title="Log Out" icon="exit" onClick={this.logout} />
+            </TopbarMenuLink>*/}
           </div>
         </Collapse>
       </div>
