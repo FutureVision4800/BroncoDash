@@ -17,6 +17,7 @@ export default class TopbarProfile extends PureComponent {
 
     this.getUserInfo = this.getUserInfo.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   toggle = () => {
@@ -55,6 +56,35 @@ export default class TopbarProfile extends PureComponent {
 
   }
 
+  logout(event){
+    event.preventDefault();
+    console.log('logging out');
+    
+    fetch('/api/user/logout', {
+      method: 'POST',
+      body: JSON.stringify({
+          username: this.state.username, 
+          password: this.state.password
+        }),
+      headers: {'Content-Type': 'application/json'},
+      })
+      .then(res => res.json()
+      .then(data => {
+        console.log(data);
+        if(res.status === 200){
+          this.setState({
+            loggedIn: false,
+            username: null
+          });
+        }
+      }))
+      .catch(err => console.log('Error: ', err));
+    
+
+  }
+
+
+
   render() {
     return (
       <div className="topbar__profile">
@@ -73,7 +103,8 @@ export default class TopbarProfile extends PureComponent {
             <div className="topbar__menu-divider" />
             <TopbarMenuLink title="Account Settings" icon="cog" path="/account/profile" />
             <TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />
-            <TopbarMenuLink title="Log Out" icon="exit" path="/log_in" />
+            <button title="Log Out" icon="exit" onClick={this.logout} />
+            <TopbarMenuLink title="Log Out" icon="exit" path="/log_in"><button title="Log Out" icon="exit" onClick={this.logout} /></TopbarMenuLink>
           </div>
         </Collapse>
       </div>

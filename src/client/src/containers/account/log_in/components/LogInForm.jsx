@@ -60,6 +60,10 @@ class LogInForm extends PureComponent {
             redirectTo: '/home'
           });
         }
+        else if(res.status === 401){
+          console.log('Invalid Login');
+          alert("Invalid Login");
+        }
       }))
       .catch(err => console.log("Login Error: ",err));
       
