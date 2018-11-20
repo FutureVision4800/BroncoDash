@@ -25,6 +25,13 @@ class LogInForm extends PureComponent {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.showPassword = this.showPassword.bind(this);
+    this.logout = this.logout.bind(this);
+    this.login = this.login.bind(this);
+    this.createAccount = this.createAccount.bind(this);
+  }
+
+  componentDidMount(){
+    this.logout();
   }
 
   handleChange(event){
@@ -35,8 +42,12 @@ class LogInForm extends PureComponent {
 
   handleSubmit(event){
     event.preventDefault();
-    
-    
+    this.login();
+      
+  }
+
+  login(){
+
     fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify({
@@ -51,11 +62,6 @@ class LogInForm extends PureComponent {
         if(res.status === 200){
           console.log("Succecssfull login");
           
-         /* this.props.updateUser({
-            loggedIn: true,
-            username: data.username
-          });
-        */
           this.setState({
             redirectTo: '/home'
           });
@@ -66,7 +72,34 @@ class LogInForm extends PureComponent {
         }
       }))
       .catch(err => console.log("Login Error: ",err));
-      
+
+  }
+
+  logout(){
+    //event.preventDefault();
+    console.log('logging out');
+    
+    fetch('/api/user/logout', {
+      method: 'POST',
+      body: JSON.stringify({
+          username: this.state.username, 
+          password: this.state.password
+        }),
+      headers: {'Content-Type': 'application/json'},
+      })
+      .then(res => res.json()
+      .then(data => {
+        console.log(data);
+        if(res.status === 200){
+          this.setState({
+            loggedIn: false,
+            username: null
+          });
+        }
+      }))
+      .catch(err => console.log('Error: ', err));
+    
+
   }
 
   showPassword(event) {
@@ -74,6 +107,10 @@ class LogInForm extends PureComponent {
     this.setState({
       showPassword: !this.state.showPassword,
     });
+  }
+
+  createAccount(){
+    return <Redirect to="/register" />
   }
 
   render() {
@@ -136,9 +173,7 @@ class LogInForm extends PureComponent {
           </div>
           <div className="account__btns">
             <button className="btn btn-primary account__btn" onClick={this.handleSubmit} type="submit">Sign In</button>
-            <Link className="btn btn-outline-primary account__btn" to="/register">Create
-              Account
-            </Link>
+            <button className="btn btn-outline-primary account__btn" onClick={this.createAccount}>Create Account</button>
           </div>
         </form>
       );

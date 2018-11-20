@@ -13,7 +13,8 @@ const ClubsList = props => (
                             clubName={currentClub.clubName} 
                             clubCategory={currentClub.category} 
                             clubEmail={currentClub.email} 
-                            clubDescription={currentClub.description}/>)}
+                            clubDescription={currentClub.description}
+                            myBAR={currentClub.myBAR}/>)}
     </div>
     
 );

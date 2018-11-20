@@ -17,7 +17,6 @@ export default class TopbarProfile extends PureComponent {
 
     this.getUserInfo = this.getUserInfo.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   toggle = () => {
@@ -35,13 +34,27 @@ export default class TopbarProfile extends PureComponent {
     .then(res => res.json()
     .then(data => {
       if(data.user){
-        console.log("Get User: There is a user saved in the server session: ");
+        console.log("Get User: There is a user saved in the server session: ", data.user);
 
         this.setState({
           loggedIn: true,
-          username: data.user.username,  
-          userFullName: data.user.name
+          username: data.user.username
         });
+
+        fetch('/users/getInfo',{
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            username: this.state.username
+          })
+        })
+        .then(res => res.json()
+        .then(data => {
+          console.log(data);
+          this.setState({ userFullName: data[0].name })
+        }))
+        .catch(err => console.log(err));
+
     } 
     else{
       console.log("Get user: no user");
@@ -56,33 +69,7 @@ export default class TopbarProfile extends PureComponent {
 
   }
 
-  logout(event){
-    event.preventDefault();
-    console.log('logging out');
-    
-    fetch('/api/user/logout', {
-      method: 'POST',
-      body: JSON.stringify({
-          username: this.state.username, 
-          password: this.state.password
-        }),
-      headers: {'Content-Type': 'application/json'},
-      })
-      .then(res => res.json()
-      .then(data => {
-        console.log(data);
-        if(res.status === 200){
-          this.setState({
-            loggedIn: false,
-            username: null
-          });
-        }
-      }))
-      .catch(err => console.log('Error: ', err));
-    
-
-  }
-
+  
 
 
   render() {
@@ -90,7 +77,7 @@ export default class TopbarProfile extends PureComponent {
       <div className="topbar__profile">
         <button className="topbar__avatar" onClick={this.toggle}>
           <img className="topbar__avatar-img" src={Ava} alt="avatar" />
-          <p className="topbar__avatar-name">{ this.state.username }</p>
+          <p className="topbar__avatar-name">{ this.state.userFullName }</p>
           <DownIcon className="topbar__icon" />
         </button>
         {this.state.collapse && <button className="topbar__back" onClick={this.toggle} />}
@@ -103,13 +90,7 @@ export default class TopbarProfile extends PureComponent {
             <div className="topbar__menu-divider" />
             <TopbarMenuLink title="Account Settings" icon="cog" path="/account/profile" />
             <TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />
-            <button className="topbar__link" icon="exit" onClick={this.logout}>
-              <span className={`topbar__link-icon lnr `} />
-              <p className="topbar__link-title">Log Out</p>
-            </button>
-            {/*<TopbarMenuLink title="Log Out" icon="exit" path="/log_in">
-              <button title="Log Out" icon="exit" onClick={this.logout} />
-            </TopbarMenuLink>*/}
+            <TopbarMenuLink title="Log Out" icon="exit" path="/log_in" />
           </div>
         </Collapse>
       </div>

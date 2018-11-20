@@ -13,48 +13,60 @@ export default class ProfileMain extends React.Component{
       userInfo: [],
       profile_username: "",
       profile_name: "",
-      profile_email: ""
-      
+      profile_email: "",
+      loggedIn: false
     };
-  }
-
-
-
-  getUserInfo(){
-
-    fetch('/users/getInfo')
-    .then(res => res)
-    .then(res => res.json())
-    .then(data => this.setState({
-                        userInfo: data,
-                        profile_username: data[0].username,
-                        profile_name: data[0].name,
-                        profile_email: data[0].email,   
-    }))
-    .catch(err => console.log(err));
-
   }
 
   componentDidMount(){
     this.getUserInfo();
   }
 
-/*
+  getUserInfo(){
 
-  componentDidMount(){
-    fetch('/users/getInfo')
-      .then(res => res.json())
+    fetch('/api/user/getCurrentUser')
+      .then(res => res)
+      .then(res => res.json()
+      .then(data => {
+        if(data.user){
+          console.log("Get User: There is a user saved in the server session: ");
+  
+          this.setState({
+            loggedIn: true,
+            profile_username: data.user.username
+          });
+  
+          fetch('/users/getInfo',{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              username: this.state.profile_username
+            })
+          })
+          .then(res => res.json()
+          .then(data => 
+            this.setState({ 
+              profile_name: data[0].name,
+              profile_email: data[0].email
+             })))
+          .catch(err => console.log(err));
+  
+      } 
+      else{
+        console.log("Get user: no user");
+        this.setState({
+          loggedIn: false,
+          username: null,
+          userFullName: null
+        });
+      }
+    }))
       .catch(err => console.log(err));
+  
+    
   }
 
-  getInfo(){
-    return fetch('/users/getInfo')
-    .then(res => res.json())
-    .then(userInfo => this.setState({ userInfo }))
-    .catch(err => console.log(err));
-  }
 
-*/
 
   render(){
     return(

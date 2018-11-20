@@ -12,7 +12,7 @@ export default class ClubsPage extends React.Component{
     componentDidMount(){
         fetch('/database/getClubs')
         .then(res => res)
-        .then(res => res.json())
+        .then(res => res.json()
         .then(data => {
 
             const allClubs = data.map(c => {
@@ -21,7 +21,8 @@ export default class ClubsPage extends React.Component{
                     clubName: c.clubName,
                     description: c.description,
                     email: c.email,
-                    category: c.category
+                    category: c.category,
+                    myBAR: c.myBAR
                 };
             });
 
@@ -30,7 +31,7 @@ export default class ClubsPage extends React.Component{
             });
 
             this.setState(newState);
-        })
+        }))
         .catch(err => console.log(err));
     }
 

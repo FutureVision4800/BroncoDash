@@ -20,6 +20,7 @@ const ClubTile = props => (
                         <div>
                             <h5>Category: { props.clubCategory }</h5>
                             <h5>Contact Info: <a href={"mailto:" + props.clubEmail}>{ props.clubEmail }</a></h5>
+                            <h5>More Info: <a href={ props.myBAR }>{ props.myBAR }</a></h5>
                             <h6>{ props.clubDescription }</h6>
                         </div>
                     </CardBody>
@@ -34,7 +35,12 @@ ClubTile.propTypes = {
     clubName: PropTypes.string,
     clubCategory: PropTypes.string,
     clubEmail: PropTypes.string,
-    clubDescription: PropTypes.string
+    clubDescription: PropTypes.string,
+    myBAR: PropTypes.string,
+    website: PropTypes.string,
+    fb: PropTypes.string,
+    ig: PropTypes.string
+
 };
 
 export default translate('common')(ClubTile);
