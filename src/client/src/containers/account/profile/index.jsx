@@ -20,7 +20,7 @@ class Calendar extends React.Component{
               <Col md={12} lg={12} xl={4}>
                 <Row>
                   <ProfileMain />
-                  <ProfileCalendar />
+                  {/*<ProfileCalendar />*/}
                 </Row>
               </Col>
               <ProfileTabs />

@@ -7,7 +7,8 @@ const userSchema = new Schema({
     username: { type: String, unique: false, required: false},
     name: { type: String, unique: false, required: false},
     password: { type: String, unique: false, required: false},
-    email: { type: String, unique: false, required: false}
+    email: { type: String, unique: false, required: false},
+    clubs: {type: [Object], unique: false, required: false}
 });
 
 //Defind User Schema Methods

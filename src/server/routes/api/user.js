@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../../database/models/user');
 const passport = require('../../passport');
-const app = require('../../app');
+const app = require('../../server');
 
 router.post('/signup', (req, res) => {
     console.log('user signup');
@@ -23,7 +23,8 @@ router.post('/signup', (req, res) => {
                 username: username,
                 password: password,
                 name: name,
-                email: email
+                email: email,
+                clubs: []
             });
             newUser.save((err, savedUser) => {
                 if(err) return res.json(err);

@@ -5,6 +5,7 @@ import ActivityTimeline from '../../../../shared/components/activity-timeline/Ac
 import showResults from './Show';
 import ProfileSettings from './ProfileSettings';
 import TextEditorTwo  from '../../../../shared/components/text-editor/TextEditor';
+import ProfileClubs from './ProfileClubs';
 
 export default class ProfileTabs extends PureComponent {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class ProfileTabs extends PureComponent {
                       this.toggle('2');
                     }}
                   >
-                    Editor
+                    My Clubs
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -67,7 +68,7 @@ export default class ProfileTabs extends PureComponent {
                   <ActivityTimeline />
                 </TabPane>
                 <TabPane tabId="2">
-                  <TextEditorTwo />
+                  <ProfileClubs />
                 </TabPane>
                 <TabPane tabId="3">
                   <ProfileSettings onSubmit={showResults} />

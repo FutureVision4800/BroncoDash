@@ -22,11 +22,13 @@ class SidebarContent extends Component {
         <ul className="sidebar__block">
           <SidebarLink title="Clubs and Organizations"  route="/organizations" onClick={this.hideSidebar} />
         </ul>
+        {/*
         <ul className="sidebar__block">
           <SidebarLink title="Mail" icon="envelope" route="/mail" onClick={this.hideSidebar} />
           <SidebarLink title="Chat" icon="bubble" route="/chat" onClick={this.hideSidebar} />
           <SidebarLink title="Google map" icon="map" route="/maps/google_map" onClick={this.hideSidebar} />
         </ul>
+        */}
         <ul className="sidebar__block">
           <SidebarLink title="Log Out" icon="exit" route="/log_in" />
         </ul>

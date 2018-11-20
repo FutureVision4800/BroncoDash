@@ -5,6 +5,7 @@
 .profile__card {
   height: 100%;
   padding: 0;
+  text-align: center;
 
   @include themify($themes) {
     background-color: themed('colorBackground');
@@ -52,8 +53,10 @@
 }
 
 .profile__information {
-  padding: 30px 40px;
+  padding: 30px 30px;
   display: flex;
+  text-align: center;
+  
 
   @include themify($themes) {
     border-bottom: 1px solid themed('colorBorder');
@@ -98,7 +101,7 @@
 }
 
 .profile__data {
-  padding-left: 25px;
+  text-align: center;
   width: calc(100% - 140px);
 }
 

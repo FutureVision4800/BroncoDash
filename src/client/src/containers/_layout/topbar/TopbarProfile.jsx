@@ -76,7 +76,7 @@ export default class TopbarProfile extends PureComponent {
     return (
       <div className="topbar__profile">
         <button className="topbar__avatar" onClick={this.toggle}>
-          <img className="topbar__avatar-img" src={Ava} alt="avatar" />
+          {/*<img className="topbar__avatar-img" src={Ava} alt="avatar" />*/}
           <p className="topbar__avatar-name">{ this.state.userFullName }</p>
           <DownIcon className="topbar__icon" />
         </button>
@@ -84,12 +84,14 @@ export default class TopbarProfile extends PureComponent {
         <Collapse isOpen={this.state.collapse} className="topbar__menu-wrap">
           <div className="topbar__menu">
             <TopbarMenuLink title="My Profile" icon="user" path="/account/profile" />
+            {/*
             <TopbarMenuLink title="Calendar" icon="calendar-full" path="/default_pages/calendar" />
             <TopbarMenuLink title="Tasks" icon="list" path="/default_pages/calendar" />
             <TopbarMenuLink title="Inbox" icon="inbox" path="/mail" />
+            */}
             <div className="topbar__menu-divider" />
             <TopbarMenuLink title="Account Settings" icon="cog" path="/account/profile" />
-            <TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />
+            {/*<TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />*/}
             <TopbarMenuLink title="Log Out" icon="exit" path="/log_in" />
           </div>
         </Collapse>

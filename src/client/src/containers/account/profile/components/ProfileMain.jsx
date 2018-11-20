@@ -74,17 +74,20 @@ export default class ProfileMain extends React.Component{
         <Card>
           <CardBody className="profile__card">
             <div className="profile__information">
+              {/*
               <div className="profile__avatar">
                 <img src={Ava} alt="avatar" />
               </div>
+              */}  
               <div className="profile__data">
                 <p className="profile__name">{ this.state.profile_name }</p>
                 <p className="profile__work">CPP Student</p>
                 <p className="profile__contact">{ this.state.profile_email }</p>
-                <p className="profile__contact">(123)-456-7890</p>
-                <Button color="primary" className="icon profile__btn"><p><MessageTextOutlineIcon /> Message</p></Button>
+                {/*<p className="profile__contact">(123)-456-7890</p>*/}
+                {/*<Button color="primary" className="icon profile__btn"><p><MessageTextOutlineIcon /> Message</p></Button>*/}
               </div>
             </div>
+           {/* 
             <div className="profile__stats">
               <div className="profile__stat">
                 <p className="profile__stat-number">05</p>
@@ -99,6 +102,7 @@ export default class ProfileMain extends React.Component{
                 <p className="profile__stat-title">Reports</p>
               </div>
             </div>
+           */}   
           </CardBody>
         </Card>
       </Col>

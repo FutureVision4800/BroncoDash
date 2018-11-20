@@ -173,7 +173,7 @@ class LogInForm extends PureComponent {
           </div>
           <div className="account__btns">
             <button className="btn btn-primary account__btn" onClick={this.handleSubmit} type="submit">Sign In</button>
-            <button className="btn btn-outline-primary account__btn" onClick={this.createAccount}>Create Account</button>
+            <Link className="btn btn-outline-primary account__btn" to='/register' >Create Account</Link>
           </div>
         </form>
       );
