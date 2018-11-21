@@ -5,6 +5,7 @@ import ActivityTimeline from '../../../../shared/components/activity-timeline/Ac
 import showResults from './Show';
 import ProfileSettings from './ProfileSettings';
 import ProfileClubs from './ProfileClubs';
+import ProfileMain from './ProfileMain';
 
 export default class ProfileTabs extends PureComponent {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class ProfileTabs extends PureComponent {
 
   render() {
     return (
-      <Col md={12} lg={12} xl={8}>
+      <Col md={12} lg={12} xl={12}>
         <Card>
           <div className="profile__card tabs tabs--bordered-bottom">
             <div className="tabs__wrap">
@@ -38,7 +39,7 @@ export default class ProfileTabs extends PureComponent {
                       this.toggle('1');
                     }}
                   >
-                    My Clubs
+                    Account Info
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -48,7 +49,7 @@ export default class ProfileTabs extends PureComponent {
                       this.toggle('2');
                     }}
                   >
-                    Activity
+                    My Clubs
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -58,18 +59,31 @@ export default class ProfileTabs extends PureComponent {
                       this.toggle('3');
                     }}
                   >
+                    Activity
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink
+                    className={classnames({ active: this.state.activeTab === '4' })}
+                    onClick={() => {
+                      this.toggle('4');
+                    }}
+                  >
                     Settings
                   </NavLink>
                 </NavItem>
               </Nav>
               <TabContent activeTab={this.state.activeTab}>
                 <TabPane tabId="1">
-                  <ProfileClubs /> 
+                  <ProfileMain /> 
                 </TabPane>
                 <TabPane tabId="2">
-                  <ActivityTimeline />
+                  <ProfileClubs /> 
                 </TabPane>
                 <TabPane tabId="3">
+                  <ActivityTimeline />
+                </TabPane>
+                <TabPane tabId="4">
                   <ProfileSettings onSubmit={showResults} />
                 </TabPane>
               </TabContent>

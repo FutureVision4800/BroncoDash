@@ -53,9 +53,10 @@ class Layout extends Component {
   render() {
     const { customizer, sidebar, theme } = this.props;
 
+    
     return (
       <div>
-        {/*
+        
         <Customizer
           customizer={customizer}
           sidebar={sidebar}
@@ -67,7 +68,7 @@ class Layout extends Component {
           changeBorderRadius={this.changeBorderRadius}
           toggleBoxShadow={this.toggleBoxShadow}
         />
-        */}
+        
         {this.props.customizer.topNavigation ?
           <TopbarWithNavigation
             changeMobileSidebarVisibility={this.changeMobileSidebarVisibility}

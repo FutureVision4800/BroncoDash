@@ -4,7 +4,6 @@ import MessageTextOutlineIcon from 'mdi-react/MessageTextOutlineIcon';
 
 //const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
 
-
 export default class ProfileMain extends React.Component{
 
   
@@ -15,6 +14,7 @@ export default class ProfileMain extends React.Component{
       profile_username: "",
       profile_name: "",
       profile_email: "",
+      profile_clubs: 0,
       loggedIn: false
     };
   }
@@ -48,7 +48,8 @@ export default class ProfileMain extends React.Component{
           .then(data => 
             this.setState({ 
               profile_name: data[0].name,
-              profile_email: data[0].email
+              profile_email: data[0].email,
+              profile_clubs: data[0].clubs.length
              })))
           .catch(err => console.log(err));
   
@@ -69,7 +70,7 @@ export default class ProfileMain extends React.Component{
 
   render(){
     return(
-      <Col md={4} lg={8} xl={8}>
+      
         <Card>
           <CardBody className="profile__card">
             <div className="profile__information">
@@ -79,36 +80,21 @@ export default class ProfileMain extends React.Component{
               </div>
               */}  
               <div className="profile__data">
-                <p className="profile__name">{ this.state.profile_name }</p>
-                <p className="profile__work">CPP Student</p>
-                <p className="profile__contact">{ this.state.profile_email }</p>
+                <h1 className="profile__name" style={{ padding: "50px", "padding-bottom": "50px" }}>{ this.state.profile_name }</h1>
+                <h4 className="profile__work" >CPP Student</h4>
+                <h4 className="profile__contact">{ this.state.profile_email }</h4>
+                <h5 className="profile__contact">{`Currently part of ${this.state.profile_clubs} clubs`}</h5>
                 {/*<p className="profile__contact">(123)-456-7890</p>*/}
-                <Button color="primary" className="icon profile__btn">
+                {/*<Button color="primary" className="icon profile__btn">
                   <p><MessageTextOutlineIcon />
                     <a style={{color:'#FFF'}} href={"mailto:" + this.state.profile_email}>Message</a>
                   </p>
-                </Button>
+                </Button>*/}
               </div>
             </div>
-           {/* 
-            <div className="profile__stats">
-              <div className="profile__stat">
-                <p className="profile__stat-number">05</p>
-                <p className="profile__stat-title">Projects</p>
-              </div>
-              <div className="profile__stat">
-                <p className="profile__stat-number">24</p>
-                <p className="profile__stat-title">Tasks</p>
-              </div>
-              <div className="profile__stat">
-                <p className="profile__stat-number">12</p>
-                <p className="profile__stat-title">Reports</p>
-              </div>
-            </div>
-           */}   
           </CardBody>
         </Card>
-      </Col>
+
     );
   }
 }

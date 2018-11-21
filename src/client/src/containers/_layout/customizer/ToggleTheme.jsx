@@ -25,7 +25,7 @@ class ToggleTheme extends PureComponent {
           className="toggle-btn__input-label"
           onClick={theme.className === 'theme-dark' ? changeToLight : changeToDark}
         />
-        <span>Dark Theme</span>
+        <span>Switch Mode</span>
       </div>
     );
   }
