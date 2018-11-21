@@ -2,7 +2,8 @@ import React from 'react';
 import { Card, CardBody, Col, Button } from 'reactstrap';
 import MessageTextOutlineIcon from 'mdi-react/MessageTextOutlineIcon';
 
-const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
+//const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
+
 
 export default class ProfileMain extends React.Component{
 
@@ -66,11 +67,9 @@ export default class ProfileMain extends React.Component{
     
   }
 
-
-
   render(){
     return(
-      <Col md={12} lg={12} xl={12}>
+      <Col md={4} lg={8} xl={8}>
         <Card>
           <CardBody className="profile__card">
             <div className="profile__information">
@@ -84,7 +83,11 @@ export default class ProfileMain extends React.Component{
                 <p className="profile__work">CPP Student</p>
                 <p className="profile__contact">{ this.state.profile_email }</p>
                 {/*<p className="profile__contact">(123)-456-7890</p>*/}
-                {/*<Button color="primary" className="icon profile__btn"><p><MessageTextOutlineIcon /> Message</p></Button>*/}
+                <Button color="primary" className="icon profile__btn">
+                  <p><MessageTextOutlineIcon />
+                    <a style={{color:'#FFF'}} href={"mailto:" + this.state.profile_email}>Message</a>
+                  </p>
+                </Button>
               </div>
             </div>
            {/* 

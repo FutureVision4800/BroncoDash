@@ -1,7 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import FacebookIcon from 'mdi-react/FacebookIcon';
-import GooglePlusIcon from 'mdi-react/GooglePlusIcon';
 import LogInForm from './components/LogInForm';
 
 const LogIn = () => (
@@ -17,21 +14,6 @@ const LogIn = () => (
           <h4 className="account__subhead subhead">Find your next organization</h4>
         </div>
         <LogInForm onSubmit />
-        <div className="account__or">
-          <p>Or Easily Using</p>
-        </div>
-        <div className="account__social">
-          <Link
-            className="account__social-btn account__social-btn--facebook"
-            to="/home"
-          ><FacebookIcon />
-          </Link>
-          <Link
-            className="account__social-btn account__social-btn--google"
-            to="/home"
-          ><GooglePlusIcon />
-          </Link>
-        </div>
       </div>
     </div>
   </div>

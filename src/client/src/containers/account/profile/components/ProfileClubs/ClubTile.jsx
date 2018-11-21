@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
+import Divider from '@material-ui/core/Divider';
 
 
 
@@ -14,8 +15,9 @@ const ClubTile = props => (
             <div>
                 <Card>
                     <CardBody className="dashboard__card-widget">
+                        <Divider />
                         <div className="card__title">
-                            <h2 className="bold-text">{ props.clubName }</h2>
+                            <h3 className="bold-text">{ props.clubName }</h3>
                         </div>
                         <div>
                             <h5>Category: { props.clubCategory }</h5>

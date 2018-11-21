@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TopbarSidebarButton from './TopbarSidebarButton';
 import TopbarProfile from './TopbarProfile';
-import TopbarMail from './TopbarMail';
-import TopbarNotification from './TopbarNotification';
 import TopbarSearch from './TopbarSearch';
 
 class Topbar extends PureComponent {
@@ -28,10 +26,6 @@ class Topbar extends PureComponent {
           </div>
           <div className="topbar__right">
             <TopbarSearch />
-            {/*
-            <TopbarNotification />
-            <TopbarMail new />
-            */}
             <TopbarProfile />
           </div>
         </div>
