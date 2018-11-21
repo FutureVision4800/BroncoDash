@@ -29,6 +29,13 @@ router.get('/andrea', function(req, res, next) {
   res.send('Hello Andrea');
 });
 
+router.get('/getAllUsers', (req, res, next) => {
+  db.collection("users").find({}).toArray((err,result) => {
+    if(err) throw err;
+    console.log(result);
+    res.json(result);
+  })
+});
 
 router.post('/getInfo', function(req, res, next) {
 

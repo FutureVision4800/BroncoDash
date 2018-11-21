@@ -35,7 +35,7 @@ router.post('/signup', (req, res) => {
 
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/login', (req, res, next) => {
     console.log('routes/api/user.js, login, req.body: ');
     console.log(req.body);
     next();

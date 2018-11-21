@@ -21,6 +21,7 @@ import Mail from '../mail/index';
 import Landing from '../landing/index';
 
 import ClubsPage from '../clubs_page/index';
+import UsersPage from '../users_page/index';
 
 const Account = () => (
   <Switch>
@@ -39,6 +40,7 @@ const wrappedRoutes = () => (
       <Route path="/chat" component={Chat} />
       <Route path="/account" component={Account} />
       <Route path="/organizations" component={ClubsPage} />
+      <Route path="/users" component={UsersPage} />
     </div>
   </div>
 );
