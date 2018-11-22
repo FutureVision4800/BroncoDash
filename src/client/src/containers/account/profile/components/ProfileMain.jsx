@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardBody, Col, Button } from 'reactstrap';
-import MessageTextOutlineIcon from 'mdi-react/MessageTextOutlineIcon';
+import { Card, CardBody } from 'reactstrap';
+
 
 //const Ava = `${process.env.PUBLIC_URL}/img/12.png`;
 
@@ -36,23 +36,8 @@ export default class ProfileMain extends React.Component{
             loggedIn: true,
             profile_username: data.user.username
           });
-  
-          fetch('/users/getInfo',{
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-              username: this.state.profile_username
-            })
-          })
-          .then(res => res.json()
-          .then(data => 
-            this.setState({ 
-              profile_name: data[0].name,
-              profile_email: data[0].email,
-              profile_clubs: data[0].clubs.length
-             })))
-          .catch(err => console.log(err));
-  
+          this.getCurrentUserInfo();
+          
       } 
       else{
         console.log("Get user: no user");
@@ -64,8 +49,26 @@ export default class ProfileMain extends React.Component{
       }
     }))
       .catch(err => console.log(err));
-  
-    
+  }
+
+  getCurrentUserInfo(){
+
+    fetch('/users/getInfo',{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        username: this.state.profile_username
+      })
+    })
+    .then(res => res.json()
+    .then(data => 
+      this.setState({ 
+        profile_name: data[0].name,
+        profile_email: data[0].email,
+        profile_clubs: data[0].clubs.length
+       })))
+    .catch(err => console.log(err));
+
   }
 
   render(){
@@ -80,7 +83,7 @@ export default class ProfileMain extends React.Component{
               </div>
               */}  
               <div className="profile__data">
-                <h1 className="profile__name" style={{ padding: "50px", "padding-bottom": "50px" }}>{ this.state.profile_name }</h1>
+                <h1 className="profile__name" style={{ padding: "50px", paddingBottom: "50px" }}>{ this.state.profile_name }</h1>
                 <h4 className="profile__work" >CPP Student</h4>
                 <h4 className="profile__contact">{ this.state.profile_email }</h4>
                 <h5 className="profile__contact">{`Currently part of ${this.state.profile_clubs} clubs`}</h5>

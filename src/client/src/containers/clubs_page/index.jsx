@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ClubsList from './ClubsList';
+import ClubSearch from './ClubSearch';
 
 
 export default class ClubsPage extends React.Component{
@@ -42,14 +43,23 @@ export default class ClubsPage extends React.Component{
         .catch(err => console.log(err));
     }
 
+    searchQwery(searchQwery){
+        this.setState({ qwery: searchQwery });
+    }
+
 
     render(){
         return(
         <div>
-            <h1 className="bold-text" style={{ "padding-bottom": "30px","padding": "15px" }}>Cal Poly Pomona Clubs and Oranizations</h1>
-            <ClubsList clubs={this.state.clubs} />  
-        </div>)
-        ;
+            <div className="topbar__right">
+                <ClubSearch callbackFromClubPage={this.searchQwery}/>
+            </div>
+            <div>
+                <h1 className="bold-text" style={{ paddingBottom: "30px", padding: "15px" }}>Cal Poly Pomona Clubs and Oranizations</h1>
+                <ClubsList clubs={this.state.clubs} />  
+            </div>
+        </div>
+        );
     }
 
 }

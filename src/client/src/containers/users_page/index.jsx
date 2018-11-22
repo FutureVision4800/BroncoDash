@@ -38,7 +38,7 @@ export default class UsersPage extends React.Component{
     render(){
         return(
         <div>
-            <h1 className="bold-text" style={{ "paddingBottom": "30px","padding": "15px" }}>Bronco Dash Users</h1>
+            <h1 className="bold-text" style={{ paddingBottom: "30px",padding: "15px" }}>Bronco Dash Users</h1>
             <UsersList users={this.state.users} />  
         </div>)
         ;

@@ -32,7 +32,7 @@ router.get('/andrea', function(req, res, next) {
 router.get('/getAllUsers', (req, res, next) => {
   db.collection("users").find({}).toArray((err,result) => {
     if(err) throw err;
-    console.log(result);
+//    console.log(result);
     res.json(result);
   })
 });

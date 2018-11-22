@@ -4,7 +4,7 @@ import EyeIcon from 'mdi-react/EyeIcon';
 import KeyVariantIcon from 'mdi-react/KeyVariantIcon';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
 import MailRuIcon from 'mdi-react/MailRuIcon';
-//import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class RegisterForm extends PureComponent {
@@ -20,6 +20,7 @@ class RegisterForm extends PureComponent {
       email: '',
       password:'',
       showPassword: false,
+      redirectTo: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -50,16 +51,17 @@ class RegisterForm extends PureComponent {
       headers: {'Content-Type': 'application/json'}
       //credentials: 'same-origin'
       })
-      .then(res => res.json())
+      .then(res => res.json()
       .then(data => {
         console.log(data);
         if(!data.error){
           console.log('succesfull signup');
+          this.setState({ redirectTo: '/log_in' });
         }
         else{
           console.log('username already taken');
         }
-      })
+      }))
       .catch(err => console.log("signup error",err));
 
 
@@ -76,87 +78,93 @@ class RegisterForm extends PureComponent {
   render() {
     const { handleSubmit } = this.props;
 
-    return (
-      <form className="form" onSubmit={handleSubmit}>
+    if(this.state.redirectTo){
+      return <Redirect to={{ pathname: this.state.redirectTo }} />
+    }
 
-        <div className="form__form-group">
-          <span className="form__form-group-label">Name</span>
-          <div className="form__form-group-field">
-            <div className="form__form-group-icon">
-              <AccountOutlineIcon />
-            </div>
-            <Field
-              name="name"
-              component="input"
-              type="text"
-              placeholder="Name"
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-          </div>
-        </div>
+    else{
+      return (
+        <form className="form" onSubmit={handleSubmit}>
 
-        <div className="form__form-group">
-          <span className="form__form-group-label">Username</span>
-          <div className="form__form-group-field">
-            <div className="form__form-group-icon">
-              <AccountOutlineIcon />
+          <div className="form__form-group">
+            <span className="form__form-group-label">Name</span>
+            <div className="form__form-group-field">
+              <div className="form__form-group-icon">
+                <AccountOutlineIcon />
+              </div>
+              <Field
+                name="name"
+                component="input"
+                type="text"
+                placeholder="Name"
+                value={this.state.name}
+                onChange={this.handleChange}
+              />
             </div>
-            <Field
-              name="username"
-              component="input"
-              type="text"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
           </div>
-        </div>
 
-        <div className="form__form-group">
-          <span className="form__form-group-label">E-mail</span>
-          <div className="form__form-group-field">
-            <div className="form__form-group-icon">
-              <MailRuIcon />
+          <div className="form__form-group">
+            <span className="form__form-group-label">Username</span>
+            <div className="form__form-group-field">
+              <div className="form__form-group-icon">
+                <AccountOutlineIcon />
+              </div>
+              <Field
+                name="username"
+                component="input"
+                type="text"
+                placeholder="Username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
             </div>
-            <Field
-              name="email"
-              component="input"
-              type="email"
-              placeholder="example@mail.com"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
           </div>
-        </div>
 
-        <div className="form__form-group form__form-group--forgot">
-          <span className="form__form-group-label">Password</span>
-          <div className="form__form-group-field">
-            <div className="form__form-group-icon">
-              <KeyVariantIcon />
+          <div className="form__form-group">
+            <span className="form__form-group-label">E-mail</span>
+            <div className="form__form-group-field">
+              <div className="form__form-group-icon">
+                <MailRuIcon />
+              </div>
+              <Field
+                name="email"
+                component="input"
+                type="email"
+                placeholder="example@mail.com"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
             </div>
-            <Field
-              name="password"
-              component="input"
-              type={this.state.showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <button
-              className={`form__form-group-button${this.state.showPassword ? ' active' : ''}`}
-              onClick={e => this.showPassword(e)}
-            ><EyeIcon />
-            </button>
           </div>
-        </div>
-        <div className="account__btns">
-          {/*<Link className="btn btn-primary account__btn" to="/dashboard_default">Sign Up</Link>*/}
-          <button className="btn btn-primary account__btn" onClick={this.handleSubmit} type="submit">Sign Up</button>
-        </div>
-      </form>
-    );
+
+          <div className="form__form-group form__form-group--forgot">
+            <span className="form__form-group-label">Password</span>
+            <div className="form__form-group-field">
+              <div className="form__form-group-icon">
+                <KeyVariantIcon />
+              </div>
+              <Field
+                name="password"
+                component="input"
+                type={this.state.showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <button
+                className={`form__form-group-button${this.state.showPassword ? ' active' : ''}`}
+                onClick={e => this.showPassword(e)}
+              ><EyeIcon />
+              </button>
+            </div>
+          </div>
+          <div className="account__btns">
+            {/*<Link className="btn btn-primary account__btn" to="/dashboard_default">Sign Up</Link>*/}
+            <button className="btn btn-primary account__btn" onClick={this.handleSubmit} type="submit">Sign Up</button>
+          </div>
+        </form>
+      );
+    }
   }
 }
 

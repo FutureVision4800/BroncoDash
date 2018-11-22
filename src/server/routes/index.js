@@ -24,7 +24,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Bronco Rush' });
 });
 
-router.get('/database/getClubs', res => {
+router.get('/database/getClubs', (req,res) => {
     db.collection("BroncoRush_Clubs").find({}).toArray((err, result) => {
       if (err) throw err;
 

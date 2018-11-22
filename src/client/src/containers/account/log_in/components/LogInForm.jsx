@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import EyeIcon from 'mdi-react/EyeIcon';
 import KeyVariantIcon from 'mdi-react/KeyVariantIcon';
 import AccountOutlineIcon from 'mdi-react/AccountOutlineIcon';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import renderCheckBoxField from '../../../../shared/components/form/CheckBox';
 
@@ -19,6 +19,7 @@ class LogInForm extends PureComponent {
       username: '',
       password: '',
       showPassword: false,
+      mustCreateAccount: false,
       redirectTo: null
     };
     
@@ -110,7 +111,7 @@ class LogInForm extends PureComponent {
   }
 
   createAccount(){
-    return <Redirect to="/register" />
+    this.setState({ mustCreateAccount: true });
   }
 
   render() {
@@ -118,6 +119,9 @@ class LogInForm extends PureComponent {
 
     if(this.state.redirectTo){
       return <Redirect to={{ pathname: this.state.redirectTo }} />
+    }
+    else if(this.state.mustCreateAccount){
+      return <Redirect to={{ pathname: '/register' }} />
     }
     else{
       return (
@@ -173,7 +177,7 @@ class LogInForm extends PureComponent {
           </div>
           <div className="account__btns">
             <button className="btn btn-primary account__btn" onClick={this.handleSubmit} type="submit">Sign In</button>
-            <Link className="btn btn-outline-primary account__btn" to='/register' >Create Account</Link>
+            <button className="btn btn-outline-primary account__btn" onClick={this.createAccount} >Create Account</button>
           </div>
         </form>
       );

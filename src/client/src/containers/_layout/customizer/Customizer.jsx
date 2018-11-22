@@ -48,7 +48,7 @@ export default class Customizer extends PureComponent {
         </button>
         <div className={customizerClass}>
           <div className="customizer__title-wrap">
-            <h5>Theme Mode</h5>
+            <h5>Switch Theme</h5>
             <button className="customizer__close-btn" onClick={this.handleOpen}>
               <CloseIcon />
             </button>
