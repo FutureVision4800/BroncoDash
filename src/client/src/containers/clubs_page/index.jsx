@@ -2,6 +2,7 @@ import React from 'react';
 
 import ClubsList from './ClubsList';
 import ClubSearch from './ClubSearch';
+import { ThoughtBubbleIcon } from 'mdi-react';
 
 
 export default class ClubsPage extends React.Component{
@@ -12,10 +13,53 @@ export default class ClubsPage extends React.Component{
             qwery: null,
             clubs:[]
         }
+        this.componentDidMount = this.componentDidMount.bind(this);
+        this.getSearchedClubs = this.getSearchedClubs.bind(this);
+        this.getAllClubs = this.getAllClubs.bind(this);
+        this.searchQwery = this.searchQwery.bind(this);
     }
     
     componentDidMount(){
-       this.getAllClubs();
+        
+        this.getAllClubs();
+
+    }
+
+    
+    componentDidUpdate(){
+   
+       
+    }
+    
+    getSearchedClubs(){
+        fetch('/database/getQweryNameClubs',{
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+            clubName: this.state.qwery
+            })
+          })
+            .then(res => res.json()
+            .then(data => {
+
+                const allClubs = data.map(c => {
+                    return {
+                        id: c._id,
+                        clubName: c.clubName,
+                        description: c.description,
+                        email: c.email,
+                        category: c.category,
+                        myBAR: c.myBAR
+                    };
+                });
+
+                const newState = Object.assign({}, this.state, {
+                    clubs: allClubs
+                });
+
+                this.setState(newState);
+            }))
+        .catch(err => console.log(err));
     }
 
     getAllClubs(){
@@ -44,7 +88,20 @@ export default class ClubsPage extends React.Component{
     }
 
     searchQwery(searchQwery){
+        console.log("search qweery: ", searchQwery);
+        console.log("previous qwuery",this.state.qwery);
         this.setState({ qwery: searchQwery });
+        console.log("new qwery", this.state.qwery);
+
+        if(this.state.qwery === null || this.state.qwery === ""){
+            console.log(this.state.qwery);
+            this.getAllClubs();
+        }
+        else{
+            console.log(this.state.qwery);
+            this.getSearchedClubs();
+        }
+        this.forceUpdate();
     }
 
 

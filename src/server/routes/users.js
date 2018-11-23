@@ -53,6 +53,18 @@ router.post('/getInfo', function(req, res, next) {
   
 });
 
+router.post('/updateUserClub', (req, res) => {
+
+  var query = { username: req.body.username };
+  var newClub = { $addToSet: {clubs: req.body.addClub} };
+
+  db.collection("BroncoRush_Clubs").updateOne(query, newClub, (err, res) => {
+    if(err) throw err;
+    console.log("club added");
+  });
+
+});
+
 router.get('/api/hello', (req, res) => {
 res.send({hello: 'hello from the backend'});
 });

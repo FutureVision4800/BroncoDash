@@ -59,16 +59,6 @@ export default class ProfileTabs extends PureComponent {
                       this.toggle('3');
                     }}
                   >
-                    Activity
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink
-                    className={classnames({ active: this.state.activeTab === '4' })}
-                    onClick={() => {
-                      this.toggle('4');
-                    }}
-                  >
                     Settings
                   </NavLink>
                 </NavItem>
@@ -81,9 +71,6 @@ export default class ProfileTabs extends PureComponent {
                   <ProfileClubs /> 
                 </TabPane>
                 <TabPane tabId="3">
-                  <ActivityTimeline />
-                </TabPane>
-                <TabPane tabId="4">
                   <ProfileSettings onSubmit={showResults} />
                 </TabPane>
               </TabContent>

@@ -24,6 +24,12 @@ const ClubTile = props => (
                             <h5>Contact Info: <a href={"mailto:" + props.clubEmail}>{ props.clubEmail }</a></h5>
                             <h5>More Info: <a href={ props.myBAR }>{ props.myBAR }</a></h5>
                             <h6>{ props.clubDescription }</h6>
+                            <button 
+                                className="btn btn-primary account__btn"
+                                style={{width: "15%", marginTop: "15px"}} 
+                            >
+                                Remove
+                            </button>
                         </div>
                     </CardBody>
                 </Card>

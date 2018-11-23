@@ -16,15 +16,16 @@ export default class ClubSearch extends PureComponent {
 
   onInputOpen(event) {
     event.preventDefault();
-    this.setState({ inputOpen: !this.state.inputOpen });
+    this.setState({ inputOpen: !this.state.inputOpen, qwery: "" });
   }
 
   handleChange(event){
+    event.preventDefault();
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state.qwery);
     this.props.callbackFromClubPage(this.state.qwery);
+    //console.log(this.state.qwery);
   }
 
   render() {

@@ -1,16 +1,13 @@
 import React from 'react';
-import { Card, CardBody } from 'reactstrap';
+import { Card, CardBody, Button } from 'reactstrap';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
 
-
-
-
-
-
-const ClubTile = props => (
+        
     
-    
+
+const ClubTile2 = props => (
+        
             <div>
                 <Card>
                     <CardBody className="dashboard__card-widget">
@@ -22,14 +19,129 @@ const ClubTile = props => (
                             <h5>Contact Info: <a href={"mailto:" + props.clubEmail}>{ props.clubEmail }</a></h5>
                             <h5>More Info: <a href={ props.myBAR }>{ props.myBAR }</a></h5>
                             <h6>{ props.clubDescription }</h6>
+                            <h6>key: { props.clubID }</h6>
+                            <button 
+                                className="btn btn-primary account__btn"
+                                style={{width: "15%", margin: "15px"}} 
+                            >
+                                Add
+                            </button>
                         </div>
                     </CardBody>
                 </Card>
             </div>
+        
 );
 
+class ClubTile extends React.Component{
+
+    constructor(props){
+        super(props);
+        this.state = {
+            currentUser: "",
+            clubName: props.clubName,
+            clubCategory: props.clubCategory,
+            clubEmail: props.clubEmail,
+            myBAR: props.myBAR,
+            clubDescription: props.clubDescription,
+            clubID: props.clubID
+        };
+        //this.componentDidMount = this.componentDidMount.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.addClubToUserDatabase = this.addClubToUserDatabase.bind(this);
+        this.getClub = this.getClub.bind(this);
+        this.addClub = this.addClub.bind(this);
+        this.getCurrentUser = this.getCurrentUser(this);
+    }
 
 
+    handleSubmit(event){
+        event.preventDefault();
+        this.getClub(this.state.clubID);
+    }
+
+    getClub(clubID){
+
+        //console.log(clubID);
+        fetch('/database/getQweryIDClubs', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                _id: clubID
+            })
+        })
+        .then(res => res.json()
+        .then(data => {
+            console.log(data);
+            this.addClub(data);
+        }))
+        .catch(err => console.log(err));
+
+    }
+
+    addClub(newClub){
+        this.getCurrentUser();
+        fetch('/users/updateUserClub', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body : JSON.stringify({
+                username: this.state.currentUser,
+                addClub: newClub
+            })
+        })
+        .catch(err => console.log(err));
+    }
+
+    getCurrentUser(){
+
+        var currentUser;
+        fetch('/api/user/getCurrentUser')
+        .then(res => res.json()
+        .then(data => {
+            if(data.user){
+                console.log("Get User: There is a user saved in the server session: ");
+                currentUser = data.user.username;
+                this.setState({ currentUser: data.user.username });
+        } 
+        else{
+            console.log("Get user: no user");
+        }
+        }))
+        .catch(err => console.log(err));
+
+    return currentUser;
+
+    }
+
+    render(){
+        return(   <div>
+            <Card>
+                <CardBody className="dashboard__card-widget">
+                    <div className="card__title">
+                        <h2 className="bold-text">{ this.props.clubName }</h2>
+                    </div>
+                    <div>
+                        <h5>Category: { this.props.clubCategory }</h5>
+                        <h5>Contact Info: <a href={"mailto:" + this.props.clubEmail}>{ this.props.clubEmail }</a></h5>
+                        <h5>More Info: <a href={ this.props.myBAR }>{ this.props.myBAR }</a></h5>
+                        <h6>{ this.props.clubDescription }</h6>
+                        <h6>key: { this.props.clubID }</h6>
+                        <button 
+                            className="btn btn-primary account__btn"
+                            style={{width: "15%", margin: "15px"}}
+                            onClick={this.handleSubmit} 
+                            
+                        >
+                            Add
+                        </button>
+                    </div>
+                </CardBody>
+            </Card>
+        </div>);
+    }
+
+}
+/*
 ClubTile.propTypes = {
     key: PropTypes.string,
     clubName: PropTypes.string,
@@ -42,49 +154,8 @@ ClubTile.propTypes = {
     ig: PropTypes.string
 
 };
-
-export default translate('common')(ClubTile);
-
-
-/*
-class ClubTile extends PureComponent {
-    
-    
-    static proptypes = {
-        clubName: PropTypes.string.isRequired,
-        clubDescrip: PropTypes.string.isRequired,
-    };
-    
-
-    constructor(props){
-        super(props);
-        this.state = {
-            clubName: props.clubName,
-            clubDescrip: props.clubDescrip,
-            clubEmail: props.clubEmail,
-            clubCategory: props.clubCategory
-        };
-    }
-
-    render(){
-        return (
-            <Col md={12} xl={3} lg={6} xs={12} >
-                <Card>
-                    <CardBody className="dashboard__card-widget">
-                        <div className="card__title">
-                            <h2 className="bold-text">{ this.props.clubName }</h2>
-                        </div>
-                        <div>
-                            <h5>Category: { this.props.clubCategory }</h5>
-                            <h5>Contact Info: { this.props.clubEmail }</h5>
-                            <h6>{ this.props.clubDescrip }</h6>
-                        </div>
-                    </CardBody>
-                </Card>
-            </Col>
-        );
-    }
-}
-
-export default translate('common')(ClubTile);
 */
+
+export default translate('common')(ClubTile);
+
+

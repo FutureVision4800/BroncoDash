@@ -33,14 +33,42 @@ router.get('/database/getClubs', (req,res) => {
   });
 });
 
-router.post('/database/getQweryClubs', (req, res) => {
-
+router.post('/database/getQweryCategoryClubs', (req, res) => {
+  
   var query = { category: req.body.category };
 
   db.collection("BroncoRush_Clubs").find(query).toArray((err, result) => {
     if (err) throw err;
 
-   // console.log(result);
+    console.log(result);
+    res.json(result);
+  });
+  
+});
+
+router.post('/database/getQweryIDClubs', (req, res) => {
+
+  console.log(req.body._id);
+  var query = { _id: req.body._id };
+
+  db.collection("BroncoRush_Clubs").find(query).toArray((err, result) => {
+    if(err) throw err;
+
+    console.log(result);
+    res.json(result[0]);
+  });
+
+});
+
+router.post('/database/getQweryNameClubs', (req, res) => {
+
+  console.log(req.body.clubName);
+  var query = { clubName: /req.body.clubName/ };
+
+  db.collection("BroncoRush_Clubs").find(query).toArray((err, result) => {
+    if (err) throw err;
+
+   console.log(result);
     res.json(result);
   });
   
