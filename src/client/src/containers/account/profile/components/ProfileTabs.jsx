@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Card, Col, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
-import ActivityTimeline from '../../../../shared/components/activity-timeline/ActivityTimeline';
 import showResults from './Show';
 import ProfileSettings from './ProfileSettings';
 import ProfileClubs from './ProfileClubs';

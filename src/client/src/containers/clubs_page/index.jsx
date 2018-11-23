@@ -2,7 +2,7 @@ import React from 'react';
 
 import ClubsList from './ClubsList';
 import ClubSearch from './ClubSearch';
-import { ThoughtBubbleIcon } from 'mdi-react';
+//import { ThoughtBubbleIcon } from 'mdi-react';
 
 
 export default class ClubsPage extends React.Component{

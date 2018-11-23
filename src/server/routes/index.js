@@ -7,6 +7,7 @@ let db; // global variable to hold the connection
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://brayalad:Guadalajara1@ds245523.mlab.com:45523/broncorush_data";
 const dbName = ("broncorush_data");
+const ObjectID = require('mongodb').ObjectID;
 
 // MongoDB Connection 
 MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
@@ -48,13 +49,15 @@ router.post('/database/getQweryCategoryClubs', (req, res) => {
 
 router.post('/database/getQweryIDClubs', (req, res) => {
 
-  console.log(req.body._id);
-  var query = { _id: req.body._id };
+  console.log("ID from Backend: ",req.body._id);
+
+
+  var query = { _id: new ObjectID(req.body._id) };
 
   db.collection("BroncoRush_Clubs").find(query).toArray((err, result) => {
     if(err) throw err;
 
-    console.log(result);
+    console.log("DB ID Collection results: ",result);
     res.json(result[0]);
   });
 

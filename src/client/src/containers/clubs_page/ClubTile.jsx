@@ -48,21 +48,21 @@ class ClubTile extends React.Component{
         };
         //this.componentDidMount = this.componentDidMount.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.addClubToUserDatabase = this.addClubToUserDatabase.bind(this);
         this.getClub = this.getClub.bind(this);
         this.addClub = this.addClub.bind(this);
-        this.getCurrentUser = this.getCurrentUser(this);
+        this.getCurrentUser = this.getCurrentUser.bind(this);
     }
 
 
     handleSubmit(event){
         event.preventDefault();
+        this.getCurrentUser();
         this.getClub(this.state.clubID);
     }
 
     getClub(clubID){
 
-        //console.log(clubID);
+        console.log("Club ID for search",clubID);
         fetch('/database/getQweryIDClubs', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -72,7 +72,7 @@ class ClubTile extends React.Component{
         })
         .then(res => res.json()
         .then(data => {
-            console.log(data);
+            console.log("return data from QweryID: ",data);
             this.addClub(data);
         }))
         .catch(err => console.log(err));
@@ -80,7 +80,8 @@ class ClubTile extends React.Component{
     }
 
     addClub(newClub){
-        this.getCurrentUser();
+        console.log("Current User: ", this.state.currentUser);
+        console.log("New Club to be Addded: ", newClub);
         fetch('/users/updateUserClub', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -94,13 +95,11 @@ class ClubTile extends React.Component{
 
     getCurrentUser(){
 
-        var currentUser;
         fetch('/api/user/getCurrentUser')
         .then(res => res.json()
         .then(data => {
             if(data.user){
-                console.log("Get User: There is a user saved in the server session: ");
-                currentUser = data.user.username;
+                console.log("Get User: There is a user saved in the server session: ", data.user.username);
                 this.setState({ currentUser: data.user.username });
         } 
         else{
@@ -108,8 +107,6 @@ class ClubTile extends React.Component{
         }
         }))
         .catch(err => console.log(err));
-
-    return currentUser;
 
     }
 

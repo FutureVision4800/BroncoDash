@@ -57,9 +57,11 @@ router.post('/updateUserClub', (req, res) => {
 
   var query = { username: req.body.username };
   var newClub = { $addToSet: {clubs: req.body.addClub} };
+  console.log("Update user club query: ", query);
+  console.log("Update user new Club: ",newClub);
 
-  db.collection("BroncoRush_Clubs").updateOne(query, newClub, (err, res) => {
-    if(err) throw err;
+  db.collection("users").updateOne(query, newClub, (err, res) => {
+    if(err) console.log(err);
     console.log("club added");
   });
 
