@@ -21,7 +21,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/test', function(req, res, next) {
   res.render('index', { title: 'Bronco Rush' });
 });
 

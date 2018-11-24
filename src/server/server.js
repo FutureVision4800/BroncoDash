@@ -60,6 +60,12 @@ app.use(function(req, res, next) {
 });
 */
 
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  console.log("Front End served");
+});
+
 // Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -70,6 +76,8 @@ app.use('/api/user', userRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {

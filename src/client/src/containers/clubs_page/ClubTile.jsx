@@ -19,7 +19,6 @@ const ClubTile2 = props => (
                             <h5>Contact Info: <a href={"mailto:" + props.clubEmail}>{ props.clubEmail }</a></h5>
                             <h5>More Info: <a href={ props.myBAR }>{ props.myBAR }</a></h5>
                             <h6>{ props.clubDescription }</h6>
-                            <h6>key: { props.clubID }</h6>
                             <button 
                                 className="btn btn-primary account__btn"
                                 style={{width: "15%", margin: "15px"}} 
@@ -58,6 +57,9 @@ class ClubTile extends React.Component{
         event.preventDefault();
         this.getCurrentUser();
         this.getClub(this.state.clubID);
+        //console.log("test1");
+        //this.forceUpdate();
+        //console.log("test2");
     }
 
     getClub(clubID){

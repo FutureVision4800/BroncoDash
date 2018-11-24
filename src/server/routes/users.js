@@ -60,9 +60,28 @@ router.post('/updateUserClub', (req, res) => {
   console.log("Update user club query: ", query);
   console.log("Update user new Club: ",newClub);
 
-  db.collection("users").updateOne(query, newClub, (err, res) => {
+  db.collection("users").updateOne(query, newClub, (err, result) => {
     if(err) console.log(err);
     console.log("club added");
+    
+    res.json(result);
+  });
+
+});
+
+router.post('/removeUserClub', (req, res) => {
+
+  var query = { username: req.body.username };
+  var removedClub = { $pull: {clubs: req.body.removedClub} };
+  console.log("Remove user club query: ", query);
+  console.log("Remove user new Club: ",removedClub);
+
+  db.collection("users").updateOne(query, removedClub, (err, result) => {
+    if(err) console.log(err);
+    console.log("Club Removed");
+
+    res.json(result);
+
   });
 
 });

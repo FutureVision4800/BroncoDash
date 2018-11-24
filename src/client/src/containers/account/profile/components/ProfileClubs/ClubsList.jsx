@@ -10,11 +10,12 @@ const ClubsList = props => (
     <div>
         {props.clubs.map(currentClub => 
                             <ClubTile key={currentClub.id} 
-                            clubName={currentClub.clubName} 
-                            clubCategory={currentClub.category} 
-                            clubEmail={currentClub.email} 
-                            clubDescription={currentClub.description}
-                            myBAR={currentClub.myBAR}/>)}
+                                clubID={currentClub.id}
+                                clubName={currentClub.clubName} 
+                                clubCategory={currentClub.category} 
+                                clubEmail={currentClub.email} 
+                                clubDescription={currentClub.description}
+                                myBAR={currentClub.myBAR}/>)}
     </div>
     
 );
