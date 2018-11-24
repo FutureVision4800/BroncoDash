@@ -17,6 +17,7 @@ export default class ClubsPage extends React.Component{
         this.componentDidMount = this.componentDidMount.bind(this);
         this.getSearchedClubs = this.getSearchedClubs.bind(this);
         this.getAllClubs = this.getAllClubs.bind(this);
+        this.getSearchedCategoryClubs = this.getSearchedCategoryClubs.bind(this);
         this.searchQwery = this.searchQwery.bind(this);
     }
     
@@ -38,6 +39,37 @@ export default class ClubsPage extends React.Component{
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
             clubName: this.state.qwery
+            })
+          })
+            .then(res => res.json()
+            .then(data => {
+
+                const allClubs = data.map(c => {
+                    return {
+                        id: c._id,
+                        clubName: c.clubName,
+                        description: c.description,
+                        email: c.email,
+                        category: c.category,
+                        myBAR: c.myBAR
+                    };
+                });
+
+                const newState = Object.assign({}, this.state, {
+                    clubs: allClubs
+                });
+
+                this.setState(newState);
+            }))
+        .catch(err => console.log(err));
+    }
+
+    getSearchedCategoryClubs(){
+        fetch('/database/getQweryCategoryClubs',{
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+            category: this.state.qwery
             })
           })
             .then(res => res.json()
@@ -100,7 +132,7 @@ export default class ClubsPage extends React.Component{
         }
         else{
             console.log(this.state.qwery);
-            this.getSearchedClubs();
+            this.getSearchedCategoryClubs();
         }
         this.forceUpdate();
     }

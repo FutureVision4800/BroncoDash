@@ -28,7 +28,7 @@ class Landing extends PureComponent {
     return (
       <div className="landing">
           <Link className="landing__btn landing__btn--header " to="/log_in">
-              Go to BroncoRush
+              Go to BroncoDash
           </Link>
       </div>
     );

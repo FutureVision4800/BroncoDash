@@ -23,7 +23,6 @@ export default class ClubCategorySearch extends PureComponent {
 
     this.getUserInfo = this.getUserInfo.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
-    this.props.callbackFromClubPage = this.props.callbackFromClubPage.bind(this);
   }
 
   toggle = () => {
@@ -34,7 +33,9 @@ export default class ClubCategorySearch extends PureComponent {
     //this.getUserInfo();
   }
 
-  changeSearchQwery(query){
+  changeSearchQwery(query, e){
+    e.preventDefault();
+
       if(query === 0)
         this.setState({ searchQwery: "" });
       else if(query === 1)
@@ -146,51 +147,125 @@ export default class ClubCategorySearch extends PureComponent {
                     className="topbar__menu-wrap" 
                     style={{ textAlign: "center"}}>
                 <div className="topbar__menu">
-                    <Button style={buttonStyle}><p>All</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(0,e)}>
+                        <p>All</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Agricultural Council (AGC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(1,e)}>
+                        <p>Agricultural Council (AGC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Asian and Pacific Islander</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(2,e)}>
+                        <p>Asian and Pacific Islander</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Christian</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(3,e)}>
+                        <p>Christian</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>College of Education of</p><p>Integrative Studies (CEIS)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(4,e)}>
+                        <p>College of Education of</p>
+                        <p>Integrative Studies (CEIS)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>College of Enviormental Design</p><p>Council (EDC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(5,e)}>
+                        <p>College of Enviormental Design</p>
+                        <p>Council (EDC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>College of Letters, Arts, {"&"}</p><p>Social Sciences Council</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(6,e)}>
+                        <p>College of Letters, Arts, {"&"}</p>
+                        <p>Social Sciences Council</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Collins College of Hospitality</p><p>Managment</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(7,e)}>
+                        <p>Collins College of Hospitality</p>
+                        <p>Managment</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Dance</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(8,e)}>
+                        <p>Dance</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Engineering Council (EC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(9,e)}>
+                        <p>Engineering Council (EC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Greek Council</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(10,e)}>
+                        <p>Greek Council</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Inter Hall Council (IHC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(11,e)}>
+                        <p>Inter Hall Council (IHC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Internfraternity Council (IFC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(12,e)}>
+                        <p>Internfraternity Council (IFC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Multicultural Council (MCC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(13,e)}>
+                        <p>Multicultural Council (MCC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Multicultural Greek</p><p>Council (MGC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(14,e)}>
+                        <p>Multicultural Greek</p><p>Council (MGC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>National Pan-Hellenic Council</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(15,e)}>
+                        <p>National Pan-Hellenic Council</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Native American</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(16,e)}>
+                        <p>Native American</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Pan African</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(17,e)}>
+                        <p>Pan African</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Panhellenic Council (NPC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(18,e)}>
+                        <p>Panhellenic Council (NPC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Religious</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(19,e)}>
+                        <p>Religious</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Science Council (SC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(20,e)}>
+                        <p>Science Council (SC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>Student Interest Council (SIC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(21,e)}>
+                        <p>Student Interest Council (SIC)</p>
+                    </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle}><p>United Business Student</p><p> Senate (UBSSC)</p></Button>
+                    <Button style={buttonStyle} 
+                      onClick={(e) => this.changeSearchQwery(22,e)}>
+                        <p>United Business Student</p>
+                        <p> Senate (UBSSC)</p>
+                    </Button>
 
                 
                     {/*<TopbarMenuLink title="My Profile" icon="user" path="/account/profile" />
