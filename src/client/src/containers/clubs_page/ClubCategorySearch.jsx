@@ -57,7 +57,7 @@ export default class ClubCategorySearch extends PureComponent {
       else if(query === 9)
         this.setState({ searchQwery: "Engineering Council (EC)" });
       else if(query === 10)
-        this.setState({ searchQwery: "Greek Council" });
+        this.setState({ searchQwery: "Greek Council (GC)" });
       else if(query === 11)
         this.setState({ searchQwery: "Inter Hall Council (IHC)" });
       else if(query === 12)
@@ -203,7 +203,7 @@ export default class ClubCategorySearch extends PureComponent {
                     <div className="topbar__menu-divider" />
                     <Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(10,e)}>
-                        <p>Greek Council</p>
+                        <p>Greek Council (GC)</p>
                     </Button>
                     <div className="topbar__menu-divider" />
                     <Button style={buttonStyle} 
