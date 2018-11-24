@@ -2,6 +2,7 @@ import React from 'react';
 
 import ClubsList from './ClubsList';
 import ClubSearch from './ClubSearch';
+import ClubCategorySearch from './ClubCategorySearch';
 //import { ThoughtBubbleIcon } from 'mdi-react';
 
 
@@ -10,7 +11,7 @@ export default class ClubsPage extends React.Component{
     constructor(){
         super();
         this.state = {
-            qwery: null,
+            qwery: "",
             clubs:[]
         }
         this.componentDidMount = this.componentDidMount.bind(this);
@@ -109,7 +110,8 @@ export default class ClubsPage extends React.Component{
         return(
         <div>
             <div className="topbar__right">
-                <ClubSearch callbackFromClubPage={this.searchQwery}/>
+                <ClubCategorySearch callbackFromClubPage={this.searchQwery}/>
+                {/*<ClubSearch callbackFromClubPage={this.searchQwery}/>*/}
             </div>
             <div>
                 <h1 className="bold-text" style={{ paddingBottom: "30px", padding: "15px" }}>Cal Poly Pomona Clubs and Oranizations</h1>
