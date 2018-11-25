@@ -4,7 +4,6 @@ import MainWrapper from './MainWrapper';
 import Layout from '../_layout/index';
 
 import NotFound404 from '../default_page/404/index';
-import Chat from '../chat/index';
 
 import Profile from '../account/profile/index';
 import EmailConfirmation from '../account/email_confimation/index';
@@ -15,8 +14,6 @@ import Register from '../account/register/index';
 import RegisterPhoto from '../account/register_photo/index';
 
 import DefaultDashboard from '../dashboards/default/index';
-
-import Mail from '../mail/index';
 
 import Landing from '../landing/index';
 
@@ -36,8 +33,6 @@ const wrappedRoutes = () => (
     <div className="container__wrap">
       <Route path="/home" component={DefaultDashboard} />
       <Route path="/dashboard_default" component={DefaultDashboard} />
-      <Route path="/mail" component={Mail} />
-      <Route path="/chat" component={Chat} />
       <Route path="/account" component={Account} />
       <Route path="/organizations" component={ClubsPage} />
       <Route path="/users" component={UsersPage} />

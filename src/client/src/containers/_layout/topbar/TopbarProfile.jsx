@@ -90,8 +90,8 @@ export default class TopbarProfile extends PureComponent {
             <TopbarMenuLink title="Inbox" icon="inbox" path="/mail" />
             */}
             <div className="topbar__menu-divider" />
-            <TopbarMenuLink title="Account Settings" icon="cog" path="/account/profile" />
-            {/*<TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />*/}
+            {/*<TopbarMenuLink title="Account Settings" icon="cog" path="/account/profile" />
+            <TopbarMenuLink title="Lock Screen" icon="lock" path="/lock_screen" />*/}
             <TopbarMenuLink title="Log Out" icon="exit" path="/log_in" />
           </div>
         </Collapse>

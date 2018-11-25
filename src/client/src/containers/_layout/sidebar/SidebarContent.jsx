@@ -17,7 +17,7 @@ class SidebarContent extends Component {
     return (
       <div className="sidebar__content">
         <ul className="sidebar__block">
-          <SidebarLink title="Home" icon="home" route="/dashboard_default" onClick={this.hideSidebar} />
+          <SidebarLink title="Home" icon="home" route="/home" onClick={this.hideSidebar} />
         </ul>
         <ul className="sidebar__block">
           <SidebarLink title="Clubs and Organizations" icon="map" route="/organizations" onClick={this.hideSidebar} />

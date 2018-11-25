@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, CardBody, Button } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
 import { translate } from 'react-i18next';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
         
     
-
+/*
 const ClubTile2 = props => (
         
             <div>
@@ -31,7 +31,7 @@ const ClubTile2 = props => (
             </div>
         
 );
-
+*/
 class ClubTile extends React.Component{
 
     constructor(props){

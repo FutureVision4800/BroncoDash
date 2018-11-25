@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import DownIcon from 'mdi-react/ChevronDownIcon';
-import { Card, CardBody, Collapse, Button } from 'reactstrap';
-import TopbarMenuLink from '../_layout/topbar/TopbarMenuLink';
+import { Card, Collapse, Button } from 'reactstrap';
+//import TopbarMenuLink from '../_layout/topbar/TopbarMenuLink';
 
 //const Ava = `${process.env.PUBLIC_URL}/img/ava.png`;
 
@@ -179,12 +179,12 @@ export default class ClubCategorySearch extends PureComponent {
                         <p>Council (EDC)</p>
                     </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle} 
+                    {/*<Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(6,e)}>
                         <p>College of Letters, Arts, {"&"}</p>
                         <p>Social Sciences Council</p>
                     </Button>
-                    <div className="topbar__menu-divider" />
+                    <div className="topbar__menu-divider" />*/}
                     <Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(7,e)}>
                         <p>Collins College of Hospitality</p>
@@ -206,7 +206,7 @@ export default class ClubCategorySearch extends PureComponent {
                         <p>Greek Council (GC)</p>
                     </Button>
                     <div className="topbar__menu-divider" />
-                    <Button style={buttonStyle} 
+                    {/*<Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(11,e)}>
                         <p>Inter Hall Council (IHC)</p>
                     </Button>
@@ -235,16 +235,16 @@ export default class ClubCategorySearch extends PureComponent {
                       onClick={(e) => this.changeSearchQwery(16,e)}>
                         <p>Native American</p>
                     </Button>
-                    <div className="topbar__menu-divider" />
+                    <div className="topbar__menu-divider" />*/}
                     <Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(17,e)}>
                         <p>Pan African</p>
                     </Button>
-                    <div className="topbar__menu-divider" />
+                    {/*<div className="topbar__menu-divider" />
                     <Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(18,e)}>
                         <p>Panhellenic Council (NPC)</p>
-                    </Button>
+                    </Button>*/}
                     <div className="topbar__menu-divider" />
                     <Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(19,e)}>

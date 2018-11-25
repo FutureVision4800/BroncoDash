@@ -2,22 +2,17 @@ import React from 'react';
 import { Card, CardBody } from 'reactstrap';
 import { translate } from 'react-i18next';
 //import PropTypes from 'prop-types';
-import Divider from '@material-ui/core/Divider';
 
-
-
-
-
+        
+    
 /*
 const ClubTile2 = props => (
-    
-    
+        
             <div>
                 <Card>
                     <CardBody className="dashboard__card-widget">
-                        <Divider />
                         <div className="card__title">
-                            <h3 className="bold-text">{ props.clubName }</h3>
+                            <h2 className="bold-text">{ props.clubName }</h2>
                         </div>
                         <div>
                             <h5>Category: { props.clubCategory }</h5>
@@ -26,17 +21,18 @@ const ClubTile2 = props => (
                             <h6>{ props.clubDescription }</h6>
                             <button 
                                 className="btn btn-primary account__btn"
-                                style={{width: "15%", marginTop: "15px"}} 
+                                style={{width: "15%", margin: "15px"}} 
                             >
-                                Remove
+                                Add
                             </button>
                         </div>
                     </CardBody>
                 </Card>
             </div>
+        
 );
 */
-class ClubTile extends React.Component{
+class RecommendClubTile extends React.Component{
 
     constructor(props){
         super(props);
@@ -47,15 +43,13 @@ class ClubTile extends React.Component{
             clubEmail: props.clubEmail,
             myBAR: props.myBAR,
             clubDescription: props.clubDescription,
-            clubID: props.clubID,
-            makeUpdate: false
+            clubID: props.clubID
         };
         //this.componentDidMount = this.componentDidMount.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getClub = this.getClub.bind(this);
-        this.removeClub = this.removeClub.bind(this);
+        this.addClub = this.addClub.bind(this);
         this.getCurrentUser = this.getCurrentUser.bind(this);
-        this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
     }
 
 
@@ -81,27 +75,24 @@ class ClubTile extends React.Component{
         .then(res => res.json()
         .then(data => {
             console.log("return data from QweryID: ",data);
-            this.removeClub(data);
+            this.addClub(data);
         }))
         .catch(err => console.log(err));
 
     }
 
-    removeClub(removedClub){
+    addClub(newClub){
         console.log("Current User: ", this.state.currentUser);
-        console.log("New Club to be Addded: ", removedClub);
-        fetch('/users/removeUserClub', {
+        console.log("New Club to be Addded: ", newClub);
+        fetch('/users/updateUserClub', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body : JSON.stringify({
                 username: this.state.currentUser,
-                removedClub: removedClub
+                addClub: newClub
             })
         })
         .catch(err => console.log(err));
-        console.log("test");
-       this.forceUpdateHandler();
-
     }
 
     getCurrentUser(){
@@ -121,15 +112,10 @@ class ClubTile extends React.Component{
 
     }
 
-    forceUpdateHandler(){
-        this.forceUpdate();
-    }
-
     render(){
         return(   <div>
             <Card>
                 <CardBody className="dashboard__card-widget">
-                    <Divider/>
                     <div className="card__title">
                         <h2 className="bold-text">{ this.props.clubName }</h2>
                     </div>
@@ -140,11 +126,11 @@ class ClubTile extends React.Component{
                         <h6>{ this.props.clubDescription }</h6>
                         <button 
                             className="btn btn-primary account__btn"
-                            style={{width: "15%", marginTop: "15px"}}
+                            style={{width: "15%", margin: "15px"}}
                             onClick={this.handleSubmit} 
                             
                         >
-                            Remove
+                            Add
                         </button>
                     </div>
                 </CardBody>
@@ -153,7 +139,6 @@ class ClubTile extends React.Component{
     }
 
 }
-
 /*
 ClubTile.propTypes = {
     key: PropTypes.string,
@@ -168,48 +153,7 @@ ClubTile.propTypes = {
 
 };
 */
-export default translate('common')(ClubTile);
+
+export default translate('common')(RecommendClubTile);
 
 
-/*
-class ClubTile extends PureComponent {
-    
-    
-    static proptypes = {
-        clubName: PropTypes.string.isRequired,
-        clubDescrip: PropTypes.string.isRequired,
-    };
-    
-
-    constructor(props){
-        super(props);
-        this.state = {
-            clubName: props.clubName,
-            clubDescrip: props.clubDescrip,
-            clubEmail: props.clubEmail,
-            clubCategory: props.clubCategory
-        };
-    }
-
-    render(){
-        return (
-            <Col md={12} xl={3} lg={6} xs={12} >
-                <Card>
-                    <CardBody className="dashboard__card-widget">
-                        <div className="card__title">
-                            <h2 className="bold-text">{ this.props.clubName }</h2>
-                        </div>
-                        <div>
-                            <h5>Category: { this.props.clubCategory }</h5>
-                            <h5>Contact Info: { this.props.clubEmail }</h5>
-                            <h6>{ this.props.clubDescrip }</h6>
-                        </div>
-                    </CardBody>
-                </Card>
-            </Col>
-        );
-    }
-}
-
-export default translate('common')(ClubTile);
-*/

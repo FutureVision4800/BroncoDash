@@ -2,29 +2,23 @@ import React from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import { translate } from 'react-i18next';
 import PropTypes from 'prop-types';
-import ActivityTimeline from '../../../shared/components/activity-timeline/ActivityTimeline';
-import Club from '../../../shared/components/Club';
+//import ActivityTimeline from '../../../shared/components/activity-timeline/ActivityTimeline';
+import RecommendClubsPage from './components/recommend_clubs_page';
+//import Club from '../../../shared/components/Club';
 
 const DefaultDashboard = ({ t }) => (
   <Container className="dashboard">
     <Row>
       <Col md={12}>
-        <h1 className="page-title">{t('Home Page')}</h1>
+        <h1 className="bold-text" 
+          style={{ margin: "30px 0px 30px"}}>
+            Club Recommendations
+        </h1>
       </Col>
     </Row>
-      <Row>
-          <Col md={12}>
-              <h4 className="page-title">Your Clubs</h4>
-          </Col>
-      </Row>
     <Row>
-        <Club clubName="CSS" clubDescrip="Computer Science Society"/>
-        <Club clubName="M.A.S.A" clubDescrip="Mexican American Student Association"/>
-        <Club clubName="FSS" clubDescrip="Food Science Society"/>
-        <Club clubName="Swift" clubDescrip="Software Club"/>
-    </Row>
-    <Row>
-      <ActivityTimeline/>
+      {/*<ActivityTimeline/>*/}
+      <RecommendClubsPage />
     </Row>
   </Container>
 );

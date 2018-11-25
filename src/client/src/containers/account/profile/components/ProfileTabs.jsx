@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Card, Col, Nav, NavItem, NavLink, TabContent, TabPane } from 'reactstrap';
 import classnames from 'classnames';
-import showResults from './Show';
-import ProfileSettings from './ProfileSettings';
+//import showResults from './Show';
+//import ProfileSettings from './ProfileSettings';
 import ProfileClubs from './ProfileClubs';
 import ProfileMain from './ProfileMain';
 
@@ -51,7 +51,7 @@ export default class ProfileTabs extends PureComponent {
                     My Clubs
                   </NavLink>
                 </NavItem>
-                <NavItem>
+                {/*<NavItem>
                   <NavLink
                     className={classnames({ active: this.state.activeTab === '3' })}
                     onClick={() => {
@@ -60,7 +60,7 @@ export default class ProfileTabs extends PureComponent {
                   >
                     Settings
                   </NavLink>
-                </NavItem>
+                  </NavItem>*/}
               </Nav>
               <TabContent activeTab={this.state.activeTab}>
                 <TabPane tabId="1">
@@ -69,9 +69,9 @@ export default class ProfileTabs extends PureComponent {
                 <TabPane tabId="2">
                   <ProfileClubs /> 
                 </TabPane>
-                <TabPane tabId="3">
+                {/*<TabPane tabId="3">
                   <ProfileSettings onSubmit={showResults} />
-                </TabPane>
+                </TabPane>*/}
               </TabContent>
             </div>
           </div>
