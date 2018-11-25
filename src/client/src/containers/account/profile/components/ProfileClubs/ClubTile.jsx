@@ -136,7 +136,12 @@ class ClubTile extends React.Component{
                     <div>
                         <h5>Category: { this.props.clubCategory }</h5>
                         <h5>Contact Info: <a href={"mailto:" + this.props.clubEmail}>{ this.props.clubEmail }</a></h5>
-                        <h5>More Info: <a href={ this.props.myBAR }>{ this.props.myBAR }</a></h5>
+                        <h5>More Info: <a href={ this.props.myBAR } 
+                                          target="_blank"  
+                                          rel="noopener noreferrer" >
+                                            { this.props.myBAR }
+                                        </a>
+                        </h5>
                         <h6>{ this.props.clubDescription }</h6>
                         <button 
                             className="btn btn-primary account__btn"

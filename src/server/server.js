@@ -113,6 +113,7 @@ const server = http.createServer(app);
  */
 
 server.listen(port, '172.31.29.200');
+//server.listen(3002);
 server.on('error', onError);
 server.on('listening', onListening);
 console.log('Now listening on http://localhost:3001/');
