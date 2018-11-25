@@ -6,7 +6,8 @@
     "client": "cd src/client && npm run start",
     "server": "cd src/server && npm run start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "deploy": "cd src/server && npm run deploy"
   },
   "author": "Future Vision",
   "license": "ISC",

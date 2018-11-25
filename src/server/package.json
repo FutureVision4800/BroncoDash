@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "deploy": "pm2 start ./server.js"
   },
   "dependencies": {
     "assert": "^1.4.1",
