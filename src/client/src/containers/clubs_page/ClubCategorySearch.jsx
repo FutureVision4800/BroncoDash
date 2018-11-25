@@ -47,7 +47,7 @@ export default class ClubCategorySearch extends PureComponent {
       else if(query === 4)
         this.setState({ searchQwery: "College of Education of Integrative Studies (CEIS)" });
       else if(query === 5)
-        this.setState({ searchQwery: "College of Enviormental Design Council (EDC)" });
+        this.setState({ searchQwery: "College of Environmental Design Council (EDC)" });
       else if(query === 6)
         this.setState({ searchQwery: "College of Letters, Arts, & Social Sciences Council" });
       else if(query === 7)
@@ -81,7 +81,7 @@ export default class ClubCategorySearch extends PureComponent {
       else if(query === 21)
          this.setState({ searchQwery: "Student Interest Council (SIC)" });
       else if(query === 22)
-        this.setState({ searchQwery: "United Business Student</p><p> Senate (UBSSC)" });
+        this.setState({ searchQwery: "United Business Students Senate (UBSSC)" });
 
     this.props.callbackFromClubPage(this.state.searchQwery);
       
@@ -263,7 +263,7 @@ export default class ClubCategorySearch extends PureComponent {
                     <div className="topbar__menu-divider" />
                     <Button style={buttonStyle} 
                       onClick={(e) => this.changeSearchQwery(22,e)}>
-                        <p>United Business Student</p>
+                        <p>United Business Students</p>
                         <p> Senate (UBSSC)</p>
                     </Button>
 

@@ -8,145 +8,105 @@ import RecommendClubsList from './RecommendClubsList';
 
 export default class RecommendClubsPage extends React.Component{
 
+
     constructor(){
         super();
         this.state = {
-            qwery: "",
-            clubs:[]
+            username:"",
+            clubs: []
         }
-        this.componentDidMount = this.componentDidMount.bind(this);
-        this.getSearchedClubs = this.getSearchedClubs.bind(this);
-        this.getAllClubs = this.getAllClubs.bind(this);
-        this.getSearchedCategoryClubs = this.getSearchedCategoryClubs.bind(this);
-        this.searchQwery = this.searchQwery.bind(this);
     }
-    
+
     componentDidMount(){
+        this.getUserInfo();
+    }
+
+
+    mapClubsList(data){
+        const allClubs = data.map(c => {
+            return {
+                id: c._id,
+                clubName: c.clubName,
+                description: c.description,
+                email: c.email,
+                category: c.category,
+                myBAR: c.myBAR
+            };
+        });
+
+        const newState = Object.assign({}, this.state, {
+            clubs: allClubs
+        });
+
+        this.setState(newState);
+    }
+
+    getUserInfo(){
+
+        fetch('/api/user/getCurrentUser')
+          .then(res => res)
+          .then(res => res.json()
+          .then(data => {
+            if(data.user){
+              console.log("Get User: There is a user saved in the server session: ");
+      
+              this.setState({
+                username: data.user.username
+              });
+      
+              fetch('/users/getInfo',{
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                  username: this.state.username
+                })
+              })
+              .then(res => res.json()
+              .then(data => {
+                //this.setState({clubs: data[0].clubs});
+                this.getUserClubCategories(data[0].clubs);
+                //this.mapClubsList(data[0].clubs);
+
+              }))
+              .catch(err => console.log(err));
+      
+          } 
+          else{
+            console.log("Get user: no user");
+            this.setState({
+              username: null,
+            });
+          }
+        }))
+          .catch(err => console.log(err));
+      
         
-        this.getAllClubs();
+      }
 
-    }
+    getUserClubCategories(data){
 
-    
-    componentDidUpdate(){
-   
-       
-    }
-    
-    getSearchedClubs(){
-        fetch('/database/getQweryNameClubs',{
-            method: "POST",
+        fetch('/api/recommend/clubRecommendations', {
+            method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-            clubName: this.state.qwery
+              userClubs: data
             })
           })
-            .then(res => res.json()
-            .then(data => {
+          .then(res => res.json()
+          .then(data => {
+            this.mapClubsList(data);
+          }))
+          .catch(err => console.log(err));
 
-                const allClubs = data.map(c => {
-                    return {
-                        id: c._id,
-                        clubName: c.clubName,
-                        description: c.description,
-                        email: c.email,
-                        category: c.category,
-                        myBAR: c.myBAR
-                    };
-                });
-
-                const newState = Object.assign({}, this.state, {
-                    clubs: allClubs
-                });
-
-                this.setState(newState);
-            }))
-        .catch(err => console.log(err));
-    }
-
-    getSearchedCategoryClubs(){
-        fetch('/database/getQweryCategoryClubs',{
-            method: "POST",
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-            category: this.state.qwery
-            })
-          })
-            .then(res => res.json()
-            .then(data => {
-
-                const allClubs = data.map(c => {
-                    return {
-                        id: c._id,
-                        clubName: c.clubName,
-                        description: c.description,
-                        email: c.email,
-                        category: c.category,
-                        myBAR: c.myBAR
-                    };
-                });
-
-                const newState = Object.assign({}, this.state, {
-                    clubs: allClubs
-                });
-
-                this.setState(newState);
-            }))
-        .catch(err => console.log(err));
-    }
-
-    getAllClubs(){
-        fetch('/database/getClubs')
-            .then(res => res.json()
-            .then(data => {
-
-                const allClubs = data.map(c => {
-                    return {
-                        id: c._id,
-                        clubName: c.clubName,
-                        description: c.description,
-                        email: c.email,
-                        category: c.category,
-                        myBAR: c.myBAR
-                    };
-                });
-
-                const newState = Object.assign({}, this.state, {
-                    clubs: allClubs
-                });
-
-                this.setState(newState);
-            }))
-        .catch(err => console.log(err));
-    }
-
-    searchQwery(searchQwery){
-        console.log("search qweery: ", searchQwery);
-        console.log("previous qwuery",this.state.qwery);
-        this.setState({ qwery: searchQwery });
-        console.log("new qwery", this.state.qwery);
-
-        if(this.state.qwery === null || this.state.qwery === ""){
-            console.log(this.state.qwery);
-            this.getAllClubs();
-        }
-        else{
-            console.log(this.state.qwery);
-            this.getSearchedCategoryClubs();
-        }
-        this.forceUpdate();
     }
 
 
     render(){
         return(
         <div>
-            <div>
-                {/*<h1 className="bold-text" style={{ paddingBottom: "30px", padding: "15px" }}>Cal Poly Pomona Clubs and Oranizations</h1>*/}
-                <RecommendClubsList clubs={this.state.clubs} />  
-            </div>
-        </div>
-        );
+            <RecommendClubsList clubs={this.state.clubs} />  
+        </div>)
+        ;
     }
 
 }

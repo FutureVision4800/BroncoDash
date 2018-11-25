@@ -25,10 +25,6 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET user account*/
-router.get('/andrea', function(req, res, next) {
-  res.send('Hello Andrea');
-});
-
 router.get('/getAllUsers', (req, res, next) => {
   db.collection("users").find({}).toArray((err,result) => {
     if(err) throw err;
@@ -52,6 +48,23 @@ router.post('/getInfo', function(req, res, next) {
   });
   
 });
+
+router.post('getUserClubs', (req, res) => {
+
+  var query = { username: req.body.username };
+
+  db.collection("users").findOne(query, (err, result) => {
+    if(err) throw err;
+
+    var userClubs = result.clubs;
+    console.log(userClubs);
+
+    res.json(userClubs);
+
+  });
+
+});
+
 
 router.post('/updateUserClub', (req, res) => {
 
@@ -86,9 +99,6 @@ router.post('/removeUserClub', (req, res) => {
 
 });
 
-router.get('/api/hello', (req, res) => {
-res.send({hello: 'hello from the backend'});
-});
 
 
 
