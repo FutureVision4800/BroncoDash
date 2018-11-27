@@ -146,7 +146,7 @@ export default class ClubsPage extends React.Component{
                 {/*<ClubSearch callbackFromClubPage={this.searchQwery}/>*/}
             </div>
             <div>
-                <h1 className="bold-text" style={{ paddingBottom: "30px", padding: "15px" }}>Cal Poly Pomona Clubs and Oranizations</h1>
+                <h1 className="bold-text" style={{ paddingBottom: "30px", padding: "15px" }}>Cal Poly Pomona Clubs and Organizations</h1>
                 <ClubsList clubs={this.state.clubs} />  
             </div>
         </div>
