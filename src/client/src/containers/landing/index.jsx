@@ -27,9 +27,22 @@ class Landing extends PureComponent {
 
     return (
       <div className="landing">
-          <Link className="landing__btn landing__btn--header " to="/log_in">
-              Go to BroncoDash
-          </Link>
+        <ul>
+          <li>
+            <Link className="landing__btn landing__btn--header " to="/log_in">
+                Go to BroncoDash
+            </Link>
+          </li>
+          <li>
+            <div style={{ textAlign: "center" }}>
+            <a className="landing__btn landing__btn--header " 
+               href="https://cs480-projects.github.io/teams-fall2018/FutureVision/index.html"
+               target="__blank">
+              More Info
+            </a>
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }
