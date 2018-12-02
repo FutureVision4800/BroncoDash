@@ -3,7 +3,7 @@
 This is Bronco Dash. An online web application build using the MERN stack.   
 Visit broncodash.com to see it in action.   
 
-Inoreder to run locally, it is recommended to hacve Node.JS v10.13.0 LTS installed on your machine.  
+Inoreder to run locally, it is recommended to have Node.JS v10.13.0 LTS installed on your machine.  
 
 To run locally:
   1. Clone the master branch of this repository  
