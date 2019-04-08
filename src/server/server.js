@@ -66,15 +66,6 @@ app.use(passport.session()); // calls the deserializeUser
 // CORS
 app.use(cors());
 
-/*
-// CORS on ExpressJS
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-*/
-
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
@@ -106,17 +97,18 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//const server = https.createServer(app,certificates);
 const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, '172.31.29.200');
-//server.listen(port);
+//server.listen(port, '172.31.29.200');
+server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-console.log('Now listening on http://localhost:3001/');
+//console.log('Now listening on http://localhost:3001/');
 
 /**
  * Normalize a port into a number, string, or false.
