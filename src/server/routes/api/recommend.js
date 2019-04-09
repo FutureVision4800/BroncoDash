@@ -5,8 +5,8 @@ const app = require('../../server');
 
 let db; // global variable to hold the connection
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://brayalad:Guadalajara1@ds245523.mlab.com:45523/broncorush_data";
-const dbName = ("broncorush_data");
+const url = process.env.DATABASE_STRING;
+const dbName = (process.env.DATABASE_NAME);
 const ObjectID = require('mongodb').ObjectID;
 
 const clubCategories = require('../data/categories');

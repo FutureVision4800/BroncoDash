@@ -21,6 +21,9 @@ const fs = require('fs');
 const http = require('http');
 const https = require('https');
 
+//const dotenv = require('dotenv');
+//dotenv.config();
+
 const certificates = {
   key: fs.readFileSync('././certificates/server.key'),
   cert: fs.readFileSync('././certificates/server.cert')
