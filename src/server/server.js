@@ -111,7 +111,7 @@ const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-//console.log('Now listening on http://localhost:3001/');
+//console.log('Now listening on http://localhost:', process.env.PORT);
 
 /**
  * Normalize a port into a number, string, or false.
