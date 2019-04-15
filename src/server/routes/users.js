@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const app = require('../server');
 
 
 let db; // global variable to hold the connection
@@ -15,13 +14,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
 
     db = client.db(dbName); // once connected, assign the connection to the global variable
     console.log("Database Connection Successfull from routes user");
-});
-
-
-
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
 });
 
 /* GET user account*/
@@ -49,7 +41,7 @@ router.post('/getInfo', function(req, res, next) {
   
 });
 
-router.post('getUserClubs', (req, res) => {
+router.post('/getUserClubs', (req, res) => {
 
   var query = { username: req.body.username };
 

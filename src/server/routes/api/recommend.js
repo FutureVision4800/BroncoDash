@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const app = require('../../server');
+const app = require('../../server').default;
 
 
 let db; // global variable to hold the connection

@@ -17,13 +17,6 @@ MongoClient.connect(url, { useNewUrlParser: true }, function(err, client) {
     console.log("Database Connection Successfull from routes index");
 });
 
-
-
-/* GET home page. */
-router.get('/test', function(req, res, next) {
-  res.render('index', { title: 'Bronco Rush' });
-});
-
 router.get('/database/getClubs', (req,res) => {
     db.collection("BroncoRush_Clubs").find({}).toArray((err, result) => {
       if (err) throw err;
@@ -76,8 +69,5 @@ router.post('/database/getQweryNameClubs', (req, res) => {
   
 });
 
-router.get('/api/hello', (req, res) => {
-  res.send({hello: 'hello from the backend'});
-});
 
 module.exports = router;
