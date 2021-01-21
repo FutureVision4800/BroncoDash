@@ -33,7 +33,7 @@
     "pug": "2.0.3",
     "serve-favicon": "2.5.0",
     "session-memory-store": "^1.0.0",
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "dotenv": "^7.0.0",
